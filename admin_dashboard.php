@@ -291,8 +291,8 @@ function isActive($file) {
       <a href="student.php" class=""><i class="fas fa-user-graduate"></i><span>Students</span></a>
       <a href="#" class=""><i class="fas fa-chart-line"></i><span>Reports</span></a>
       <a href="#" class=""><i class="fas fa-cog"></i><span>Settings</span></a>
-      <a href="admin_career_library.php"><i class="fas fa-list-ul"></i> <span>Career Test Library</span></a>
-     <a href="admin_career_reports.php"><i class="fas fa-chart-pie"></i> <span>Career Reports</span></a>
+      <a href="admin_career_library.php"><i class="fas fa-list-ul"></i> <span>Career Assessment</span></a>
+     <a href="admin_view_assessment.php"><i class="fas fa-chart-pie"></i> <span>Career Assessment Reports</span></a>
 
 
 
