@@ -111,9 +111,12 @@ function isActive($file) {
 
     <nav class="menu">
       <a href="student_dashboard.php" class="<?= isActive('student_dashboard.php') ?>"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-      <a href="career_assessment.php" class="<?= isActive('career_assessment.php') ?>"><i class="fas fa-clipboard-check"></i><span>Take Assessment</span></a>
+      <a href="assessment_test.php" class="<?= isActive('assessment_test.php') ?>"><i class="fas fa-clipboard-check"></i><span>Take Assessment</span></a>
       <a href="my_results.php" class="<?= isActive('my_results.php') ?>"><i class="fas fa-chart-line"></i><span>My Results</span></a>
       <a href="profile.php" class="<?= isActive('profile.php') ?>"><i class="fas fa-user"></i><span>Profile</span></a>
+      <a href="student_career_test.php"><i class="fas fa-question-circle"></i> Career Assessment</a>
+</li>
+
 
       <form action="logout.php" method="post" onsubmit="return confirm('Are you sure you want to logout?');">
         <button type="submit" class="sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
