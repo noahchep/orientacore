@@ -291,6 +291,10 @@ function isActive($file) {
       <a href="student.php" class=""><i class="fas fa-user-graduate"></i><span>Students</span></a>
       <a href="#" class=""><i class="fas fa-chart-line"></i><span>Reports</span></a>
       <a href="#" class=""><i class="fas fa-cog"></i><span>Settings</span></a>
+      <a href="admin_career_library.php"><i class="fas fa-list-ul"></i> <span>Career Test Library</span></a>
+     <a href="admin_career_reports.php"><i class="fas fa-chart-pie"></i> <span>Career Reports</span></a>
+
+
 
       <form action="logout.php" method="post" style="margin-top:auto;">
         <button type="submit" class="sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
