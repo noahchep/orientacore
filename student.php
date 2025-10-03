@@ -38,6 +38,17 @@ try {
         th { background-color: #f8f9fa; font-weight: 600; }
         tr:nth-child(even) { background-color: #f9f9f9; }
         tr:hover { background-color: #f1f3f5; transition: 0.2s; }
+
+        /* ✅ Keep action buttons in one line */
+        th:nth-child(6), td.actions-cell {
+            min-width: 420px;   /* expand Actions column */
+            white-space: nowrap; /* prevent wrapping */
+        }
+        .actions-cell .action-btn {
+            display: inline-flex;
+            margin-right: 6px;
+        }
+
         .action-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 5px; color: white; font-size: 13px; text-decoration: none; }
         .edit { background: #007bff; }
         .edit:hover { background: #0069d9; }
@@ -69,7 +80,7 @@ try {
 
     <div class="table-container">
         <table id="studentsTable">
-            <thead>
+           <thead>
                 <tr>
                     <th>Name</th>
                     <th>Reg No</th>
@@ -77,6 +88,7 @@ try {
                     <th>Status</th>
                     <th>Created At</th>
                     <th>Actions</th>
+                    <th>Responses</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,20 +98,44 @@ try {
                             <td><?= htmlspecialchars($student['name']) ?></td>
                             <td><?= htmlspecialchars($student['reg_no']) ?></td>
                             <td><?= htmlspecialchars($student['email']) ?></td>
-                            <td><span class="tag <?= $student['status']==='active'?'tag-active':'tag-inactive' ?>"><?= ucfirst($student['status']) ?></span></td>
-                            <td><?= date("d M Y, H:i", strtotime($student['created_at'])) ?></td>
                             <td>
-                                <a class="action-btn edit" href="edit_student.php?id=<?= $student['id'] ?>"><i class="fa fa-pencil"></i> Edit</a>
-                                <a class="action-btn delete" href="delete_student.php?id=<?= $student['id'] ?>" onclick="return confirm('Are you sure you want to delete this student?')"><i class="fa fa-trash"></i> Delete</a>
-                                <a class="action-btn view" href="view_performance.php?student_id=<?= $student['id'] ?>"><i class="fa fa-chart-line"></i> Performance</a>
-                                <a class="action-btn view" href="view_sessions.php?student_id=<?= $student['id'] ?>"><i class="fa fa-eye"></i> Sessions</a>
+                                <span class="tag <?= $student['status']==='active'?'tag-active':'tag-inactive' ?>">
+                                    <?= ucfirst($student['status']) ?>
+                                </span>
+                            </td>
+                            <td><?= date("d M Y, H:i", strtotime($student['created_at'])) ?></td>
+                            
+                            <!-- ✅ Actions in one line -->
+                            <td class="actions-cell">
+                                <a class="action-btn edit" href="edit_student.php?id=<?= $student['id'] ?>">
+                                    <i class="fa fa-pencil"></i> Edit
+                                </a>
+                                <a class="action-btn delete" href="delete_student.php?id=<?= $student['id'] ?>" onclick="return confirm('Are you sure you want to delete this student?')">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>
+                                <a class="action-btn view" href="view_performance.php?student_id=<?= $student['id'] ?>">
+                                    <i class="fa fa-chart-line"></i> Performance
+                                </a>
+                                <a class="action-btn view" href="view_sessions.php?student_id=<?= $student['id'] ?>">
+                                    <i class="fa fa-eye"></i> Sessions
+                                </a>
+                            </td>
+
+                            <!-- ✅ Responses in its own column -->
+                            <td>
+                                <a class="action-btn view" href="response.php?student_id=<?= $student['id'] ?>">
+                                    <i class="fa fa-file-alt"></i> View Responses
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="6" style="text-align:center;">No students found.</td></tr>
+                    <tr>
+                        <td colspan="7">No students found.</td>
+                    </tr>
                 <?php endif; ?>
             </tbody>
+
         </table>
     </div>
 

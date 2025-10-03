@@ -8,9 +8,17 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
     exit;
 }
 
-$studentName  = $_SESSION['name'] ?? 'Student';
-$studentEmail = $_SESSION['email'] ?? 'student@example.com';
-$userId       = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];
+
+// Fetch student info including profile picture
+$stmt = $pdo->prepare("SELECT name, email, profile_pic FROM users WHERE id = ?");
+$stmt->execute([$userId]);
+$student = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$studentName  = $student['name'] ?? 'Student';
+$studentEmail = $student['email'] ?? 'student@example.com';
+$studentPic   = $student['profile_pic'] ?? 'pro.png';
+
 
 // --- Fetch student stats ---
 $stmt = $pdo->prepare("SELECT COUNT(*) FROM career_assessments WHERE user_id = ?");
@@ -102,7 +110,8 @@ function isActive($file) {
     </div>
 
     <div class="profile">
-      <img src="pro.png" alt="student avatar">
+      <img src="<?= htmlspecialchars($studentPic) ?>" alt="student avatar">
+
       <div class="meta">
         <div class="name"><?= htmlspecialchars($studentName) ?></div>
         <div class="email"><?= htmlspecialchars($studentEmail) ?></div>

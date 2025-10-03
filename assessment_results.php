@@ -8,13 +8,15 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'student') {
 }
 
 $user_id = $_SESSION['user_id'];
-$assessment_id = $_GET['id'] ?? null;
+$studentName = $_SESSION['name'] ?? "Student";
+$studentEmail = $_SESSION['email'] ?? "N/A";
 
+$assessment_id = $_GET['id'] ?? null;
 if (!$assessment_id) {
     die("Invalid request.");
 }
 
-// Fetch the assessment
+// Fetch assessment
 $stmt = $pdo->prepare("SELECT * FROM career_assessments WHERE id = ? AND user_id = ?");
 $stmt->execute([$assessment_id, $user_id]);
 $assessment = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +25,7 @@ if (!$assessment) {
     die("Assessment not found.");
 }
 
-// Decode JSON
+// Decode JSON responses
 $responses = json_decode($assessment['responses'], true) ?: [];
 
 // Tally categories
@@ -32,12 +34,10 @@ foreach ($responses as $resp) {
     $cat = $resp['category'] ?? 'General';
     $category_count[$cat] = ($category_count[$cat] ?? 0) + 1;
 }
-
-// Top category
 arsort($category_count);
 $top_category = array_key_first($category_count);
 
-// Fetch suggestions from career_suggestions table for the top category
+// Fetch career suggestions
 $suggestions = [];
 if ($top_category) {
     $stmt = $pdo->prepare("SELECT suggestion FROM career_suggestions WHERE category = ?");
@@ -46,34 +46,122 @@ if ($top_category) {
 }
 ?>
 
-<h2>Career Assessment Results</h2>
-<p><strong>Date Taken:</strong> <?= htmlspecialchars($assessment['created_at']) ?></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career Assessment Report</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin: 0;
+            color: #007BFF;
+        }
+        h2 {
+            margin-top: 30px;
+            color: #444;
+        }
+        .student-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .highlight {
+            background: #e9f5ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .print-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .print-btn:hover {
+            background: #0056b3;
+        }
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
 
-<h3>Your Answers</h3>
-<ul>
-<?php foreach ($responses as $resp): ?>
-    <li>
-        <strong><?= htmlspecialchars($resp['question']) ?></strong><br>
-        Chosen: <?= htmlspecialchars($resp['answer']) ?> - <?= htmlspecialchars($resp['text']) ?>
-        (Category: <?= htmlspecialchars($resp['category'] ?? 'General') ?>)
-    </li>
-<?php endforeach; ?>
-</ul>
+   
 
-<h3>Category Tally</h3>
-<ul>
-<?php foreach ($category_count as $cat => $count): ?>
-    <li><?= htmlspecialchars($cat) ?>: <?= $count ?> answers</li>
-<?php endforeach; ?>
-</ul>
+    <div class="header">
+        <!-- Replace logo.png with your logo -->
+        <img src="logo.JPG" alt="System Logo">
+        <h1>OrientaCore Career Assessment Report</h1>
+        <p><em>Guiding Students Towards Informed Career Choices</em></p>
+    </div>
 
-<h3>Suggested Career Paths</h3>
-<?php if (!empty($suggestions)): ?>
+    <div class="student-info">
+        <p><strong>Name:</strong> <?= htmlspecialchars($studentName) ?></p>
+        <p><strong>Email:</strong> <?= htmlspecialchars($studentEmail) ?></p>
+        <p><strong>Date Taken:</strong> <?= htmlspecialchars($assessment['created_at']) ?></p>
+    </div>
+
+    <h2>Your Answers</h2>
     <ul>
-        <?php foreach ($suggestions as $s): ?>
-            <li><?= htmlspecialchars($s) ?></li>
+        <?php foreach ($responses as $resp): ?>
+            <li>
+                <strong><?= htmlspecialchars($resp['question']) ?></strong><br>
+                Answer: <?= htmlspecialchars($resp['answer']) ?> - <?= htmlspecialchars($resp['text']) ?>
+                (Category: <?= htmlspecialchars($resp['category'] ?? 'General') ?>)
+            </li>
         <?php endforeach; ?>
     </ul>
-<?php else: ?>
-    <p>No career suggestions available yet for this category.</p>
-<?php endif; ?>
+
+    <h2>Category Breakdown</h2>
+    <ul>
+        <?php foreach ($category_count as $cat => $count): ?>
+            <li><?= htmlspecialchars($cat) ?>: <?= $count ?> answers</li>
+        <?php endforeach; ?>
+    </ul>
+
+    <h2>Recommended Career Paths</h2>
+    <?php if (!empty($suggestions)): ?>
+        <div class="highlight">
+            <ul>
+                <?php foreach ($suggestions as $s): ?>
+                    <li><?= htmlspecialchars($s) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php else: ?>
+        <p>No career suggestions available for your top category.</p>
+    <?php endif; ?>
+
+    <br><br>
+    <p><em>Generated by OrientaCore Career Guidance System</em></p>
+ <button class="print-btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+</body>
+</html>
