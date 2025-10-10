@@ -124,6 +124,8 @@ function isActive($file) {
       <a href="my_results.php" class="<?= isActive('my_results.php') ?>"><i class="fas fa-chart-line"></i><span>My Results</span></a>
       <a href="profile.php" class="<?= isActive('profile.php') ?>"><i class="fas fa-user"></i><span>Profile</span></a>
       <a href="student_career_test.php"><i class="fas fa-question-circle"></i> Career Assessment</a>
+      <a href="learning&sessions.php" class="book-btn"><i class="fa fa-user-graduate"></i> My Learning & Sessions</a>
+
 </li>
 
 

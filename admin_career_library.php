@@ -11,8 +11,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 $success = "";
 $error = "";
 
-// Define allowed categories
-$categories = ["Creative", "Analytical", "Social", "Practical"];
+$categories = ["Interests", "Personality", "Skills", "Work Preference"];
 
 if (isset($_POST['add_bulk'])) {
     $bulk = trim($_POST['bulk_questions']);
@@ -51,209 +50,178 @@ if (isset($_POST['add_bulk'])) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bulk Career Questions (Admin)</title>
+<title>Admin - Career Questions</title>
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f7f9;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        padding-top: 40px;
-    }
+/* Reset & Typography */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    color: #2c3e50;
+}
 
-    .container {
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        max-width: 800px;
-        width: 90%;
-    }
+/* Container */
+.container {
+    max-width: 950px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
 
-    h2 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
+/* Card Layout */
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-5px); }
 
-    .success {
-        color: #155724;
-        background-color: #d4edda;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        border: 1px solid #c3e6cb;
-    }
+/* Card Header */
+.card h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #1f3b70;
+    position: relative;
+}
+.card h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg,#3a86ff,#00bcd4);
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
 
-    .error {
-        color: #721c24;
-        background-color: #f8d7da;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        border: 1px solid #f5c6cb;
-    }
+/* Messages */
+.success, .error {
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+.success {
+    background: #e6f4ea; color: #2f7a32; border: 1px solid #a3d9a5;
+}
+.error {
+    background: #fdecea; color: #a42a2a; border: 1px solid #f1a2a2;
+}
 
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-        resize: vertical;
-        box-sizing: border-box;
-        transition: border-color 0.3s;
-    }
+/* Form */
+form { display: flex; flex-direction: column; gap: 25px; }
 
-    textarea:focus {
-        border-color: #4CAF50;
-        outline: none;
-    }
+label { font-weight: 600; margin-bottom: 6px; display: block; font-size: 15px; }
 
-    select {
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-        margin-top: 5px;
-        transition: border-color 0.3s;
-    }
+textarea {
+    width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #ccc;
+    font-size: 14px; min-height: 180px; resize: vertical;
+    transition: all 0.3s;
+}
+textarea:focus { border-color: #3a86ff; box-shadow: 0 0 8px rgba(58,134,255,0.3); outline: none; }
 
-    select:focus {
-        border-color: #4CAF50;
-        outline: none;
-    }
+select {
+    width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ccc;
+    font-size: 14px; transition: all 0.3s;
+}
+select:focus { border-color: #3a86ff; box-shadow: 0 0 8px rgba(58,134,255,0.3); outline: none; }
 
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s, transform 0.2s;
-    }
+/* Buttons */
+button, .button-link {
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+}
+button {
+    background: linear-gradient(90deg,#3a86ff,#00bcd4);
+    color: white;
+}
+button:hover { transform: translateY(-2px); opacity: 0.95; }
 
-    button:hover {
-        background-color: #45a049;
-        transform: scale(1.02);
-    }
+.button-link {
+    background: linear-gradient(90deg,#ff6f61,#ff8a5b);
+    color: white;
+}
+.button-link:hover { transform: translateY(-2px); opacity: 0.95; }
 
-    a.back-btn {
-        display: inline-block;
-        text-decoration: none;
-        background: #007BFF;
-        color: white;
-        padding: 10px 16px;
-        border-radius: 6px;
-        margin-top: 20px;
-    }
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
 
-    a.back-btn:hover {
-        background-color: #0056b3;
-    }
+/* Inline Error */
+.inline-error { color: #d9534f; font-size: 13px; margin-top: 5px; display: none; }
 
-    p small {
-        color: #555;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .inline-error {
-        color: #d9534f;
-        font-size: 13px;
-        margin-top: 5px;
-        display: none;
-    }
-
+/* Instructions */
+p small code { background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 13px; }
 </style>
 <script>
-    // Auto-expand textarea
-    function autoExpand(el) {
-        el.style.height = "auto";
-        el.style.height = (el.scrollHeight) + "px";
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const textarea = document.querySelector("textarea");
-        textarea.addEventListener("input", function() {
-            autoExpand(this);
-            validateLines(this);
-        });
-    });
-
-    // Validate line format in real-time
-    function validateLines(textarea) {
-        const lines = textarea.value.split("\n");
-        const errorDiv = document.getElementById("lineError");
-        let invalidLines = [];
-
-        lines.forEach((line, index) => {
-            if (line.trim() === "") return; 
-            const parts = line.split("|");
-            if (parts.length !== 5) invalidLines.push(index + 1);
-        });
-
-        if (invalidLines.length > 0) {
-            errorDiv.textContent = "⚠ Invalid format on line(s): " + invalidLines.join(", ");
-            errorDiv.style.display = "block";
-        } else {
-            errorDiv.style.display = "none";
-        }
-    }
-
-    // Confirm submission
-    function confirmSubmit() {
-        const textarea = document.querySelector("textarea");
-        const lines = textarea.value.split("\n").filter(l => l.trim() !== "");
-        const invalid = lines.filter(l => l.split("|").length !== 5);
-
-        if (invalid.length > 0) {
-            alert("Please fix the formatting errors before submitting.");
-            return false;
-        }
-
-        return confirm("Are you sure you want to add these questions?");
-    }
+function autoExpand(el){ el.style.height="auto"; el.style.height=(el.scrollHeight)+"px"; }
+document.addEventListener("DOMContentLoaded", function(){
+    const textarea=document.querySelector("textarea");
+    if(textarea){ textarea.addEventListener("input", function(){ autoExpand(this); validateLines(this); }); }
+});
+function validateLines(textarea){
+    const lines=textarea.value.split("\n"); const errorDiv=document.getElementById("lineError"); let invalidLines=[];
+    lines.forEach((line,index)=>{ if(line.trim()==="") return; if(line.split("|").length!==5) invalidLines.push(index+1); });
+    if(invalidLines.length>0){ errorDiv.textContent="⚠ Invalid format on line(s): "+invalidLines.join(", "); errorDiv.style.display="block"; }
+    else{ errorDiv.style.display="none"; }
+}
+function confirmSubmit(){
+    const textarea=document.querySelector("textarea");
+    const lines=textarea.value.split("\n").filter(l=>l.trim()!=="");
+    const invalid=lines.filter(l=>l.split("|").length!==5);
+    if(invalid.length>0){ alert("Please fix the formatting errors before submitting."); return false; }
+    return confirm("Are you sure you want to add these questions?");
+}
 </script>
 </head>
 <body>
-
 <div class="container">
+    <div class="card">
+        <h2>Bulk Add Career Questions</h2>
 
-    <h2>Bulk Career Questions (Admin)</h2>
+        <?php if($success) echo "<div class='success'>$success</div>"; ?>
+        <?php if($error) echo "<div class='error'>$error</div>"; ?>
 
-    <?php if ($success) echo "<div class='success'>$success</div>"; ?>
-    <?php if ($error) echo "<div class='error'>$error</div>"; ?>
+        <form method="post" onsubmit="return confirmSubmit();">
+            <p><small>Format: <code>Question|Option A|Option B|Option C|Option D</code></small></p>
+            <textarea name="bulk_questions" placeholder="Example:
+Which activities interest you most?|Solving puzzles|Helping people|Designing things|Working outdoors
+How do you usually handle problems?|Analyze them logically|Talk to others|Experiment with solutions|Think creatively"></textarea>
+            <div id="lineError" class="inline-error"></div>
 
-    <form method="post" onsubmit="return confirmSubmit();">
-        <p><small>Format: <code>Question|Option A|Option B|Option C|Option D</code></small></p>
-        <textarea name="bulk_questions" rows="10" placeholder="Example:
-What do you enjoy most?|Building things|Solving problems|Helping people|Being creative
-Which task do you prefer?|Fixing machines|Analyzing data|Counseling others|Designing art"></textarea>
-        <div id="lineError" class="inline-error"></div>
-        <br><br>
+            <div>
+                <label>Select Category:</label>
+                <select name="bulk_category" required>
+                    <option value="">-- Select Category --</option>
+                    <?php foreach($categories as $cat): ?>
+                        <option value="<?=htmlspecialchars($cat)?>"><?=htmlspecialchars($cat)?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-        <label>Select Category for All Questions:</label>
-        <select name="bulk_category" required>
-            <option value="">-- Select Category --</option>
-            <?php foreach ($categories as $cat): ?>
-                <option value="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars($cat) ?></option>
-            <?php endforeach; ?>
-        </select>
-        <br><br>
+            <button type="submit" name="add_bulk">➕ Add Questions</button>
+        </form>
 
-        <button type="submit" name="add_bulk">Add Bulk Questions</button>
-    </form>
-
-    <p>
-        <a href="admin_career_suggestions.php" class="back-btn">← Back to Career Test Library</a>
-    </p>
-
+        <div class="button-group">
+            <a href="admin_career_suggestions.php" class="button-link">📚 Career Test Library</a>
+            <a href="admin_manage_questions.php" class="button-link">📝 Manage Questions</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

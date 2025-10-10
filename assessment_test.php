@@ -2,113 +2,82 @@
 session_start();
 require 'db.php';
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'student') {
+// Ensure student is logged in
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
     header("Location: login.php");
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
+// Define available categories
+$categories = ["Interests", "Personality", "Skills", "Work Preference"];
 
-// Step 0: Check if the student has already completed any assessment
-$stmt = $pdo->prepare("SELECT id FROM career_assessments WHERE user_id = ?");
-$stmt->execute([$user_id]);
-$existing_assessment = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if ($existing_assessment) {
-    // Redirect to results page
-    header("Location: assessment_results.php?id=" . $existing_assessment['id']);
-    exit;
-}
-
-// Step 1: Get all categories
-$stmt = $pdo->query("SELECT DISTINCT category FROM career_questions WHERE category IS NOT NULL");
-$categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-// Step 2: Handle category selection
-$selected_category = $_POST['selected_category'] ?? null;
-$questions = [];
-
-if ($selected_category) {
-    // Fetch questions for this category
-    $stmt = $pdo->prepare("SELECT * FROM career_questions WHERE category = ? ORDER BY id ASC");
-    $stmt->execute([$selected_category]);
-    $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-// Step 3: Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['responses']) && $questions) {
-    $responses = $_POST['responses'];
-    $assessment_type = $selected_category;
-
-    $responses_detailed = [];
-    foreach ($responses as $qid => $opt) {
-        foreach ($questions as $q) {
-            if ($q['id'] == $qid) {
-                $responses_detailed[$qid] = [
-                    "question" => $q['question_text'],
-                    "answer" => $opt,
-                    "text" => $q["option_" . strtolower($opt)],
-                    "category" => $q['category']
-                ];
-            }
-        }
-    }
-
-    $responses_json = json_encode($responses_detailed);
-
-    $stmt = $pdo->prepare("INSERT INTO career_assessments 
-        (user_id, assessment_type, responses, score, result, created_at) 
-        VALUES (?, ?, ?, ?, ?, NOW())");
-    $stmt->execute([$user_id, $assessment_type, $responses_json, 0, 'Pending Analysis']);
-
-    $assessment_id = $pdo->lastInsertId();
-    header("Location: assessment_results.php?id=" . $assessment_id);
-    exit;
-}
+// Get selected category from GET (or show selection if none)
+$selectedCategory = $_GET['category'] ?? null;
 ?>
 
-<h2>Career Interest Assessment</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; background: #f8f9fa; margin: 0; padding: 0; text-align: center; }
+.container { width: 90%; max-width: 900px; margin: 30px auto; background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px; }
+h1, h2 { color: #007bff; }
+fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px; text-align: left; }
+label { display: block; margin-left: 20px; cursor: pointer; }
+.submit-btn, button { display: block; width: 100%; background: #007bff; color: #fff; font-weight: 600; border: none; border-radius: 8px; padding: 12px; cursor: pointer; transition: background 0.3s; margin-top: 15px; }
+.submit-btn:hover, button:hover { background: #0056b3; }
+select { padding: 10px; font-size: 16px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Career Assessment</h1>
 
-<?php if (!$selected_category): ?>
-    <!-- Step 1: Select category -->
-    <form method="post">
-        <label>Select the career category you are interested in:</label><br><br>
-        <select name="selected_category" required>
-            <option value="">-- Choose Category --</option>
-            <?php foreach ($categories as $cat): ?>
-                <option value="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars($cat) ?></option>
-            <?php endforeach; ?>
-        </select>
-        <br><br>
-        <button type="submit">Start Assessment</button>
-    </form>
+    <?php if (!$selectedCategory): ?>
+        <!-- Show category selection -->
+        <p>Please select a category to start the assessment:</p>
+        <form method="GET">
+            <select name="category" required>
+                <option value="">--Select Category--</option>
+                <?php foreach ($categories as $cat): ?>
+                    <option value="<?= htmlspecialchars($cat) ?>"><?= htmlspecialchars($cat) ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit">Start Assessment</button>
+        </form>
 
-<?php else: ?>
-    <!-- Step 2: Show questions -->
-    <form method="post">
-        <input type="hidden" name="selected_category" value="<?= htmlspecialchars($selected_category) ?>">
-        <?php foreach ($questions as $index => $q): ?>
-            <div>
-                <p><strong>Q<?= $index + 1 ?>: <?= htmlspecialchars($q['question_text']) ?></strong></p>
-                <label>
-                    <input type="radio" name="responses[<?= $q['id'] ?>]" value="A" required>
-                    <?= htmlspecialchars($q['option_a']) ?>
-                </label><br>
-                <label>
-                    <input type="radio" name="responses[<?= $q['id'] ?>]" value="B">
-                    <?= htmlspecialchars($q['option_b']) ?>
-                </label><br>
-                <label>
-                    <input type="radio" name="responses[<?= $q['id'] ?>]" value="C">
-                    <?= htmlspecialchars($q['option_c']) ?>
-                </label><br>
-                <label>
-                    <input type="radio" name="responses[<?= $q['id'] ?>]" value="D">
-                    <?= htmlspecialchars($q['option_d']) ?>
-                </label>
-            </div>
-            <hr>
-        <?php endforeach; ?>
-        <button type="submit">Submit Assessment</button>
-    </form>
-<?php endif; ?>
+    <?php else: ?>
+        <!-- Fetch questions for selected category -->
+        <?php
+        $stmt = $pdo->prepare("SELECT * FROM career_questions WHERE category = ? ORDER BY id");
+        $stmt->execute([$selectedCategory]);
+        $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+
+        <p>Please answer all the questions honestly to get accurate results for <strong><?= htmlspecialchars($selectedCategory) ?></strong>.</p>
+
+        <?php if (!empty($questions)): ?>
+            <form action="process_assessment.php" method="POST">
+                <input type="hidden" name="category" value="<?= htmlspecialchars($selectedCategory) ?>">
+                <?php foreach ($questions as $q): ?>
+                    <fieldset>
+                        <legend><?= htmlspecialchars($q['question_text']) ?></legend>
+                        <label><input type="radio" name="q<?= $q['id'] ?>" value="A" required> <?= htmlspecialchars($q['option_a']) ?></label>
+                        <label><input type="radio" name="q<?= $q['id'] ?>" value="B"> <?= htmlspecialchars($q['option_b']) ?></label>
+                        <label><input type="radio" name="q<?= $q['id'] ?>" value="C"> <?= htmlspecialchars($q['option_c']) ?></label>
+                        <label><input type="radio" name="q<?= $q['id'] ?>" value="D"> <?= htmlspecialchars($q['option_d']) ?></label>
+                    </fieldset>
+                <?php endforeach; ?>
+                <button type="submit" class="submit-btn">Submit Assessment</button>
+            </form>
+        <?php else: ?>
+            <p>No questions available in this category yet.</p>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>
+</body>
+</html>
