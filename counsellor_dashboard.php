@@ -96,7 +96,7 @@ function isActive($file) {
     </div>
 
     <div class="profile">
-      <img src="pro.png" alt="avatar">
+      <img src="cou_pro.jpg" alt="avatar">
       <div class="meta">
         <div class="name"><?= htmlspecialchars($counsellorName) ?></div>
         <div class="email"><?= htmlspecialchars($counsellorEmail) ?></div>
@@ -146,7 +146,7 @@ function isActive($file) {
           <i class="fas fa-users"></i>
           <div class="meta"><div class="num"><?= $totalSessions ?></div><div class="label">Total Sessions</div></div>
         </div>
-        <div class="action"><a href="sessions.php" style="color:inherit;text-decoration:none;font-size:13px;">View</a></div>
+        <div class="action"><a href="counsellor_view_sessions.php" style="color:inherit;text-decoration:none;font-size:13px;">View</a></div>
       </div>
     </section>
 

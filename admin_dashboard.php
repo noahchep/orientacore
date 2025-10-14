@@ -277,7 +277,7 @@ function isActive($file) {
     </div>
 
     <div class="profile">
-      <img src="pro.png" alt="admin avatar">
+      <img src="pro.jpg" alt="admin avatar">
       <div class="meta">
         <div class="name"><?= htmlspecialchars($adminName) ?></div>
         <div class="email"><?= htmlspecialchars($adminEmail) ?></div>
@@ -337,7 +337,7 @@ function isActive($file) {
             <div style="font-weight:700;"><?= htmlspecialchars($adminName) ?></div>
             <div style="color:var(--muted); font-size:12px;"><?= htmlspecialchars($adminEmail) ?></div>
           </div>
-          <img src="pro.png" alt="avatar" style="width:44px;height:44px;border-radius:8px;object-fit:cover;box-shadow:0 3px 10px rgba(0,0,0,0.08)">
+          <img src="pro.jpg" alt="avatar" style="width:44px;height:44px;border-radius:8px;object-fit:cover;box-shadow:0 3px 10px rgba(0,0,0,0.08)">
         </div>
       </div>
     </header>
