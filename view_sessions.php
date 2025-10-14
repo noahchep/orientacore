@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
-// Get student ID from URL
+// Get student ID
 $student_id = $_GET['student_id'] ?? null;
 if (!$student_id) {
     die("Student ID not provided.");
@@ -19,7 +19,7 @@ $stmt = $pdo->prepare("SELECT name, reg_no FROM users WHERE id = ? AND role='stu
 $stmt->execute([$student_id]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Fetch sessions for this student with counsellor name
+// Fetch sessions
 $stmt = $pdo->prepare("
     SELECT s.session_date, s.mode, u.name AS counsellor_name, s.notes, s.action_plan, s.status
     FROM sessions s
@@ -32,91 +32,186 @@ $sessions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title><?= htmlspecialchars($student['name']) ?> - Sessions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; background: #f4f6f8; padding: 30px; }
-        h1 { font-weight: 600; margin-bottom: 20px; }
-        .back-btn { display: inline-block; margin-bottom: 20px; color: #007bff; text-decoration: none; }
-        .back-btn:hover { text-decoration: underline; }
-        .card { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        table { border-collapse: collapse; width: 100%; min-width: 900px; }
-        th, td { padding: 12px 15px; border-bottom: 1px solid #e0e0e0; text-align: left; }
-        th { background-color: #f8f9fa; font-weight: 600; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        tr:hover { background-color: #f1f3f5; transition: 0.2s; }
-        .tag { padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; color: white; }
-        .tag-completed { background: #28a745; }
-        .tag-pending { background: #ffc107; color: #212529; }
-        .tag-cancelled { background: #dc3545; }
-        .add-session-btn {
-    display: inline-block;
-    margin-left: 15px;        /* spacing from the back button */
-    padding: 8px 15px;        /* button padding */
-    background-color: #28a745; /* green background */
-    color: white;              /* text color */
-    border-radius: 5px;        /* rounded corners */
-    text-decoration: none;     /* remove underline */
-    font-weight: 500;
-    transition: background 0.3s;
-}
+<meta charset="UTF-8">
+<title><?= htmlspecialchars($student['name']) ?> - Counselling Sessions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-.add-session-btn:hover {
-    background-color: #218838; /* darker green on hover */
-}
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    </style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #e9efff 0%, #f4f6fb 100%);
+        min-height: 100vh;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        background: #0b2447;
+        color: white;
+        padding: 18px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    header a.back {
+        color: #e2e8f0;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+    header a.back:hover { color: #fff; }
+
+    main {
+        width: 95%;
+        max-width: 1100px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        margin: 40px auto;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        padding: 30px;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .page-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #0b2447;
+        display: flex;
+        align-items: center;
+    }
+
+    .page-title i {
+        margin-right: 10px;
+        color: #2563eb;
+    }
+
+    .add-session {
+        background: #2563eb;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        transition: 0.3s ease;
+    }
+
+    .add-session:hover { background: #1e40af; }
+    .add-session i { margin-right: 6px; }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    thead {
+        background-color: #f0f4ff;
+    }
+
+    th, td {
+        padding: 14px 16px;
+        text-align: left;
+        font-size: 14px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+        color: #334155;
+        font-weight: 600;
+    }
+
+    tr:hover td {
+        background-color: #f9fbff;
+        transition: 0.2s ease;
+    }
+
+    .status {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+
+    .approved { background: #e6f9ed; color: #107c41; }
+    .pending { background: #fff5cc; color: #8a6d1d; }
+    .declined { background: #fde8e8; color: #b91c1c; }
+
+    .empty {
+        text-align: center;
+        color: #6b7280;
+        font-style: italic;
+        padding: 25px 0;
+    }
+</style>
 </head>
+
 <body>
+<header>
+    <h1><?= htmlspecialchars($student['name']) ?> (<?= htmlspecialchars($student['reg_no']) ?>)</h1>
+    <a href="student.php" class="back"><i class="fa fa-arrow-left"></i> Back</a>
+</header>
 
-<a class="back-btn" href="student.php"><i class="fa fa-arrow-left"></i> Back to Students</a>
-<h1><?= htmlspecialchars($student['name']) ?> - Counselling Sessions</h1>
-<a href="add_session.php?student_id=<?= $student_id ?>" class="add-session-btn">
-    <i class="fa fa-plus"></i> Add Session
-</a>
+<main>
+    <div class="top-bar">
+        <div class="page-title"><i class="fa-solid fa-calendar-check"></i> Counselling Sessions</div>
+        <a href="add_session.php?student_id=<?= $student_id ?>" class="add-session"><i class="fa fa-plus"></i> New Session</a>
+    </div>
 
-<div class="card">
     <table>
         <thead>
             <tr>
-                <th>Session Date</th>
+                <th>Date</th>
                 <th>Mode</th>
-                <th>Counsellor Name</th>
-                <th>Notes / Summary</th>
+                <th>Counsellor</th>
+                <th>Notes</th>
                 <th>Action Plan</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <?php if ($sessions): ?>
-                <?php foreach($sessions as $s): ?>
-                    <?php
-                        $statusClass = match(strtolower($s['status'])) {
-                            'completed' => 'tag-completed',
-                            'pending' => 'tag-pending',
-                            'cancelled' => 'tag-cancelled',
-                            default => ''
-                        };
-                    ?>
-                    <tr>
-                        <td><?= htmlspecialchars($s['session_date']) ?></td>
-                        <td><?= htmlspecialchars($s['mode']) ?></td>
-                        <td><?= htmlspecialchars($s['counsellor_name']) ?></td>
-                        <td><?= htmlspecialchars($s['notes']) ?></td>
-                        <td><?= htmlspecialchars($s['action_plan']) ?></td>
-                        <td><span class="tag <?= $statusClass ?>"><?= htmlspecialchars($s['status']) ?></span></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td colspan="6" style="text-align:center;">No sessions found for this student.</td></tr>
-            <?php endif; ?>
+        <?php if ($sessions): ?>
+            <?php foreach ($sessions as $s): 
+                $status = strtolower($s['status']);
+            ?>
+            <tr>
+                <td><?= htmlspecialchars($s['session_date']) ?></td>
+                <td><?= htmlspecialchars($s['mode']) ?></td>
+                <td><?= htmlspecialchars($s['counsellor_name']) ?></td>
+                <td><?= htmlspecialchars($s['notes']) ?></td>
+                <td><?= htmlspecialchars($s['action_plan']) ?></td>
+                <td><span class="status <?= $status ?>"><?= ucfirst($status) ?></span></td>
+            </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr><td colspan="6" class="empty">No sessions found for this student.</td></tr>
+        <?php endif; ?>
         </tbody>
     </table>
-</div>
-
-
+</main>
 </body>
 </html>
