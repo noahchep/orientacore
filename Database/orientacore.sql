@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2025 at 03:35 PM
+-- Generation Time: Oct 15, 2025 at 07:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -92,7 +92,8 @@ CREATE TABLE `career_category_scores` (
 
 INSERT INTO `career_category_scores` (`id`, `student_id`, `category`, `score`, `created_at`) VALUES
 (15, 8, 'Skills', 10, '2025-10-10 16:07:21'),
-(16, 8, 'Personality', 12, '2025-10-10 16:13:05');
+(16, 8, 'Personality', 12, '2025-10-10 16:13:05'),
+(17, 8, 'Work Preference', 9, '2025-10-14 15:47:41');
 
 -- --------------------------------------------------------
 
@@ -157,6 +158,33 @@ CREATE TABLE `career_suggestions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `user_type` enum('student','admin') NOT NULL,
+  `message` text NOT NULL,
+  `is_read` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `user_id`, `user_type`, `message`, `is_read`, `created_at`) VALUES
+(1, 8, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-14 19:23:34'),
+(2, 7, 'admin', 'A counselling session for student (ID 8) has been approved.', 0, '2025-10-14 19:23:34'),
+(3, 10, 'student', 'Your counselling session request has been Declined by the counsellor.', 0, '2025-10-14 19:26:50'),
+(4, 7, 'admin', 'A counselling session for student (ID 10) has been declined.', 0, '2025-10-14 19:26:50'),
+(5, 9, '', 'New counselling session requested by student for Oct 18, 2025 01:00 PM.', 0, '2025-10-14 20:18:03'),
+(6, 7, 'admin', 'New counselling session requested by student (session ID: 3).', 0, '2025-10-14 20:18:03');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `progress`
 --
 
@@ -206,7 +234,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `student_id`, `counsellor_id`, `session_date`, `mode`, `notes`, `action_plan`, `status`, `created_at`, `updated_at`) VALUES
-(1, 8, 9, '2025-10-03 00:00:00', 'Physical', 'counselling about peer pressure', 'monitoring', 'Pending', '2025-09-22 17:13:38', '2025-10-03 17:44:36');
+(1, 8, 9, '2025-10-03 00:00:00', 'Physical', 'counselling about peer pressure', 'monitoring', 'approved', '2025-09-22 17:13:38', '2025-10-14 22:23:34'),
+(2, 10, 9, '2025-10-18 14:00:00', 'In-Person', 'ggh', 'fggf', 'declined', '2025-10-14 22:25:51', '2025-10-14 22:26:49'),
+(3, 8, 9, '2025-10-18 13:00:00', 'Physical', 'personal', 'nothing much', 'pending', '2025-10-14 23:18:03', '2025-10-14 23:18:03');
 
 -- --------------------------------------------------------
 
@@ -263,7 +293,12 @@ INSERT INTO `student_responses` (`id`, `student_id`, `question_id`, `selected_op
 (266, 8, 67, 'C', 'Personality', '2025-10-10 13:13:04'),
 (267, 8, 68, 'B', 'Personality', '2025-10-10 13:13:04'),
 (268, 8, 69, 'C', 'Personality', '2025-10-10 13:13:05'),
-(269, 8, 70, 'B', 'Personality', '2025-10-10 13:13:05');
+(269, 8, 70, 'B', 'Personality', '2025-10-10 13:13:05'),
+(270, 8, 76, 'C', 'Work Preference', '2025-10-14 12:47:41'),
+(271, 8, 77, 'C', 'Work Preference', '2025-10-14 12:47:41'),
+(272, 8, 78, 'D', 'Work Preference', '2025-10-14 12:47:41'),
+(273, 8, 79, 'C', 'Work Preference', '2025-10-14 12:47:41'),
+(274, 8, 80, 'C', 'Work Preference', '2025-10-14 12:47:41');
 
 -- --------------------------------------------------------
 
@@ -289,7 +324,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `reg_no`, `name`, `email`, `profile_pic`, `password_hash`, `role`, `status`, `created_at`) VALUES
 (7, 'ADM001', 'Super Admin', 'admin@example.com', NULL, '$2y$10$uScyNVYPXo/RyPFFyw7WyudpgdecJkeEVj6AArQ4LvBcNcOGRz32y', 'admin', 'active', '2025-09-22 11:17:23'),
-(8, 'BIT/2024/43255', 'student', 'student@gmail.com', NULL, '$2y$10$kddZFXBKZU6yc6m0TsRvmet6EJSthNCwVXhaI4vtWqlEV7p.GneCi', 'student', 'active', '2025-09-22 11:26:50'),
+(8, 'BIT/2024/43255', 'student', 'student@gmail.com', 'uploads/68eeacfbe441a.jpg', '$2y$10$kddZFXBKZU6yc6m0TsRvmet6EJSthNCwVXhaI4vtWqlEV7p.GneCi', 'student', 'active', '2025-09-22 11:26:50'),
 (9, 'coun123', 'counsellor', 'counsellor@gmail.com', NULL, '$2y$10$7qXulWihk69F/oBSCs9CweF54DWQ49fUQRk8ZUUEy1zwFAGnY8WwK', 'counsellor', 'active', '2025-09-22 11:44:27'),
 (10, 'std001', 'peter', 'peter@gmail.com', 'uploads/68dfe82b3783b.jpg', '$2y$10$SsNPkIi4h8Wi.1sLX6wlaepRJpJIFWWuTTYfSNghqADt9VrXpBfLS', 'student', 'active', '2025-09-22 15:54:06'),
 (11, 'CL001', 'Dr. Isaac', 'Isaac@orientacore.ac.ke', NULL, '$2y$10$bX7onl2h1emWEOI4wR0mYOqDATiun0/AaALE8E6AKk9EQywk2js/.', 'counsellor', 'active', '2025-09-22 15:57:58'),
@@ -333,6 +368,13 @@ ALTER TABLE `career_questions`
 --
 ALTER TABLE `career_suggestions`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `progress`
@@ -400,7 +442,7 @@ ALTER TABLE `career_assessments`
 -- AUTO_INCREMENT for table `career_category_scores`
 --
 ALTER TABLE `career_category_scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `career_questions`
@@ -413,6 +455,12 @@ ALTER TABLE `career_questions`
 --
 ALTER TABLE `career_suggestions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `progress`
@@ -430,7 +478,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student_performance`
@@ -442,7 +490,7 @@ ALTER TABLE `student_performance`
 -- AUTO_INCREMENT for table `student_responses`
 --
 ALTER TABLE `student_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -471,6 +519,12 @@ ALTER TABLE `career_assessments`
 --
 ALTER TABLE `career_category_scores`
   ADD CONSTRAINT `fk_student` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `progress`
