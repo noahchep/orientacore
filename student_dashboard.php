@@ -150,8 +150,7 @@ function isActive($file) {
       <a href="my_results.php" class="<?= isActive('my_results.php') ?>"><i class="fas fa-chart-line"></i><span>My Results</span></a>
       <a href="student_book_session.php" class="<?= isActive('student_book_session.php') ?>"><i class="fas fa-calendar-check"></i><span>Book Session</span></a>
       <a href="profile.php" class="<?= isActive('profile.php') ?>"><i class="fas fa-user"></i><span>Profile</span></a>
-      <a href="student_career_test.php"><i class="fas fa-question-circle"></i> Career Assessment</a>
-      <a href="learning&sessions.php" class="book-btn"><i class="fa fa-user-graduate"></i> My Learning & Sessions</a>
+   
       <form action="logout.php" method="post" onsubmit="return confirm('Are you sure you want to logout?');">
         <button type="submit" class="sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
       </form>
