@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2025 at 07:04 AM
+-- Generation Time: Oct 15, 2025 at 07:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -92,7 +92,7 @@ CREATE TABLE `career_category_scores` (
 
 INSERT INTO `career_category_scores` (`id`, `student_id`, `category`, `score`, `created_at`) VALUES
 (15, 8, 'Skills', 10, '2025-10-10 16:07:21'),
-(16, 8, 'Personality', 12, '2025-10-10 16:13:05'),
+(16, 8, 'Personality', 13, '2025-10-15 08:08:20'),
 (17, 8, 'Work Preference', 9, '2025-10-14 15:47:41');
 
 -- --------------------------------------------------------
@@ -180,7 +180,9 @@ INSERT INTO `notifications` (`id`, `user_id`, `user_type`, `message`, `is_read`,
 (3, 10, 'student', 'Your counselling session request has been Declined by the counsellor.', 0, '2025-10-14 19:26:50'),
 (4, 7, 'admin', 'A counselling session for student (ID 10) has been declined.', 0, '2025-10-14 19:26:50'),
 (5, 9, '', 'New counselling session requested by student for Oct 18, 2025 01:00 PM.', 0, '2025-10-14 20:18:03'),
-(6, 7, 'admin', 'New counselling session requested by student (session ID: 3).', 0, '2025-10-14 20:18:03');
+(6, 7, 'admin', 'New counselling session requested by student (session ID: 3).', 0, '2025-10-14 20:18:03'),
+(7, 9, '', 'New counselling session requested by student for Oct 10, 2025 12:00 PM.', 0, '2025-10-15 05:31:18'),
+(8, 7, 'admin', 'New counselling session requested by student (session ID: 4).', 0, '2025-10-15 05:31:18');
 
 -- --------------------------------------------------------
 
@@ -236,7 +238,8 @@ CREATE TABLE `sessions` (
 INSERT INTO `sessions` (`id`, `student_id`, `counsellor_id`, `session_date`, `mode`, `notes`, `action_plan`, `status`, `created_at`, `updated_at`) VALUES
 (1, 8, 9, '2025-10-03 00:00:00', 'Physical', 'counselling about peer pressure', 'monitoring', 'approved', '2025-09-22 17:13:38', '2025-10-14 22:23:34'),
 (2, 10, 9, '2025-10-18 14:00:00', 'In-Person', 'ggh', 'fggf', 'declined', '2025-10-14 22:25:51', '2025-10-14 22:26:49'),
-(3, 8, 9, '2025-10-18 13:00:00', 'Physical', 'personal', 'nothing much', 'pending', '2025-10-14 23:18:03', '2025-10-14 23:18:03');
+(3, 8, 9, '2025-10-18 13:00:00', 'Physical', 'personal', 'nothing much', 'pending', '2025-10-14 23:18:03', '2025-10-14 23:18:03'),
+(4, 8, 9, '2025-10-10 12:00:00', 'Physical', 'fgfga', 'dgagef', 'pending', '2025-10-15 08:31:18', '2025-10-15 08:31:18');
 
 -- --------------------------------------------------------
 
@@ -298,7 +301,12 @@ INSERT INTO `student_responses` (`id`, `student_id`, `question_id`, `selected_op
 (271, 8, 77, 'C', 'Work Preference', '2025-10-14 12:47:41'),
 (272, 8, 78, 'D', 'Work Preference', '2025-10-14 12:47:41'),
 (273, 8, 79, 'C', 'Work Preference', '2025-10-14 12:47:41'),
-(274, 8, 80, 'C', 'Work Preference', '2025-10-14 12:47:41');
+(274, 8, 80, 'C', 'Work Preference', '2025-10-14 12:47:41'),
+(275, 8, 66, 'A', 'Personality', '2025-10-15 05:08:19'),
+(276, 8, 67, 'B', 'Personality', '2025-10-15 05:08:19'),
+(277, 8, 68, 'C', 'Personality', '2025-10-15 05:08:19'),
+(278, 8, 69, 'C', 'Personality', '2025-10-15 05:08:19'),
+(279, 8, 70, 'C', 'Personality', '2025-10-15 05:08:19');
 
 -- --------------------------------------------------------
 
@@ -442,7 +450,7 @@ ALTER TABLE `career_assessments`
 -- AUTO_INCREMENT for table `career_category_scores`
 --
 ALTER TABLE `career_category_scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `career_questions`
@@ -460,7 +468,7 @@ ALTER TABLE `career_suggestions`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `progress`
@@ -478,7 +486,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student_performance`
@@ -490,7 +498,7 @@ ALTER TABLE `student_performance`
 -- AUTO_INCREMENT for table `student_responses`
 --
 ALTER TABLE `student_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 
 --
 -- AUTO_INCREMENT for table `users`
