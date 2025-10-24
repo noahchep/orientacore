@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2025 at 07:37 AM
+-- Generation Time: Oct 25, 2025 at 12:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -158,6 +158,34 @@ CREATE TABLE `career_suggestions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `counselor_reports`
+--
+
+CREATE TABLE `counselor_reports` (
+  `id` int(11) NOT NULL,
+  `student_name` varchar(100) DEFAULT NULL,
+  `session_date` date DEFAULT NULL,
+  `session_topic` varchar(150) DEFAULT NULL,
+  `issues_discussed` text DEFAULT NULL,
+  `counselor_remarks` text DEFAULT NULL,
+  `recommendations` text DEFAULT NULL,
+  `next_session` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `counselor_reports`
+--
+
+INSERT INTO `counselor_reports` (`id`, `student_name`, `session_date`, `session_topic`, `issues_discussed`, `counselor_remarks`, `recommendations`, `next_session`, `created_at`) VALUES
+(1, 'jfhjefd', '2025-12-12', 'fkldjghg', 'sdnjshfj', 'dfhsjf', 'sfshfj', '0000-00-00', '2025-10-24 20:40:58'),
+(2, 'student', '2025-12-12', 'career', 'unable to make a career decision', 'to be followed up', 'coperating', '2025-12-23', '2025-10-24 20:59:19'),
+(3, 'peter', '2025-12-12', 'career', 'making right career choice', 'progressing well', 'make a right career choice', '2025-12-17', '2025-10-24 21:10:32'),
+(4, 'student', '2025-02-12', 'dfdk', 'fdkfhkd', 'djhfskjf', 'sdjshdkj', '1222-12-12', '2025-10-24 21:13:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notifications`
 --
 
@@ -182,7 +210,15 @@ INSERT INTO `notifications` (`id`, `user_id`, `user_type`, `message`, `is_read`,
 (5, 9, '', 'New counselling session requested by student for Oct 18, 2025 01:00 PM.', 0, '2025-10-14 20:18:03'),
 (6, 7, 'admin', 'New counselling session requested by student (session ID: 3).', 0, '2025-10-14 20:18:03'),
 (7, 9, '', 'New counselling session requested by student for Oct 10, 2025 12:00 PM.', 0, '2025-10-15 05:31:18'),
-(8, 7, 'admin', 'New counselling session requested by student (session ID: 4).', 0, '2025-10-15 05:31:18');
+(8, 7, 'admin', 'New counselling session requested by student (session ID: 4).', 0, '2025-10-15 05:31:18'),
+(9, 8, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-24 20:43:44'),
+(10, 7, 'admin', 'A counselling session for student (ID 8) has been approved.', 0, '2025-10-24 20:43:44'),
+(11, 8, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-24 20:43:46'),
+(12, 7, 'admin', 'A counselling session for student (ID 8) has been approved.', 0, '2025-10-24 20:43:46'),
+(13, 9, '', 'New counselling session requested by peter for Dec 12, 2025 10:00 AM.', 0, '2025-10-24 21:08:58'),
+(14, 7, 'admin', 'New counselling session requested by peter (session ID: 5).', 0, '2025-10-24 21:08:58'),
+(15, 10, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-24 21:09:24'),
+(16, 7, 'admin', 'A counselling session for student (ID 10) has been approved.', 0, '2025-10-24 21:09:24');
 
 -- --------------------------------------------------------
 
@@ -196,20 +232,6 @@ CREATE TABLE `progress` (
   `metric` varchar(100) NOT NULL,
   `value` varchar(255) DEFAULT NULL,
   `recorded_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reports`
---
-
-CREATE TABLE `reports` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `content` text NOT NULL,
-  `created_by` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -238,8 +260,9 @@ CREATE TABLE `sessions` (
 INSERT INTO `sessions` (`id`, `student_id`, `counsellor_id`, `session_date`, `mode`, `notes`, `action_plan`, `status`, `created_at`, `updated_at`) VALUES
 (1, 8, 9, '2025-10-03 00:00:00', 'Physical', 'counselling about peer pressure', 'monitoring', 'approved', '2025-09-22 17:13:38', '2025-10-14 22:23:34'),
 (2, 10, 9, '2025-10-18 14:00:00', 'In-Person', 'ggh', 'fggf', 'declined', '2025-10-14 22:25:51', '2025-10-14 22:26:49'),
-(3, 8, 9, '2025-10-18 13:00:00', 'Physical', 'personal', 'nothing much', 'pending', '2025-10-14 23:18:03', '2025-10-14 23:18:03'),
-(4, 8, 9, '2025-10-10 12:00:00', 'Physical', 'fgfga', 'dgagef', 'pending', '2025-10-15 08:31:18', '2025-10-15 08:31:18');
+(3, 8, 9, '2025-10-18 13:00:00', 'Physical', 'personal', 'nothing much', 'approved', '2025-10-14 23:18:03', '2025-10-24 23:43:45'),
+(4, 8, 9, '2025-10-10 12:00:00', 'Physical', 'fgfga', 'dgagef', 'approved', '2025-10-15 08:31:18', '2025-10-24 23:43:44'),
+(5, 10, 9, '2025-12-12 10:00:00', 'Physical', 'career', 'make right career choice', 'approved', '2025-10-25 00:08:57', '2025-10-25 00:09:23');
 
 -- --------------------------------------------------------
 
@@ -378,6 +401,12 @@ ALTER TABLE `career_suggestions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `counselor_reports`
+--
+ALTER TABLE `counselor_reports`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
@@ -390,13 +419,6 @@ ALTER TABLE `notifications`
 ALTER TABLE `progress`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `reports`
---
-ALTER TABLE `reports`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `created_by` (`created_by`);
 
 --
 -- Indexes for table `sessions`
@@ -465,10 +487,16 @@ ALTER TABLE `career_suggestions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
+-- AUTO_INCREMENT for table `counselor_reports`
+--
+ALTER TABLE `counselor_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `progress`
@@ -477,16 +505,10 @@ ALTER TABLE `progress`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `reports`
---
-ALTER TABLE `reports`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student_performance`
@@ -539,12 +561,6 @@ ALTER TABLE `notifications`
 --
 ALTER TABLE `progress`
   ADD CONSTRAINT `progress_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `reports`
---
-ALTER TABLE `reports`
-  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `sessions`
