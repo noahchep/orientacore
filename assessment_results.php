@@ -11,58 +11,58 @@ $user_id = $_SESSION['user_id'];
 $studentName = $_SESSION['name'] ?? "Student";
 $studentEmail = $_SESSION['email'] ?? "N/A";
 
-// Get category from GET
-$category = $_GET['category'] ?? null;
-if (!$category) {
-    die("Invalid request. Please select a category.");
+// Fetch the most recent assessment date for this student
+$stmt = $pdo->prepare("
+    SELECT MAX(created_at) as latest
+    FROM student_career_results
+    WHERE student_id = ?
+");
+$stmt->execute([$user_id]);
+$latestDate = $stmt->fetchColumn();
+
+if (!$latestDate) {
+    die("No assessment results found.");
 }
 
-// Fetch all responses for this student and category along with full option texts
+// Fetch all results from the latest assessment
 $stmt = $pdo->prepare("
+    SELECT *
+    FROM student_career_results
+    WHERE student_id = ? AND created_at = ?
+    ORDER BY category
+");
+$stmt->execute([$user_id, $latestDate]);
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch all responses linked to this assessment
+$stmt2 = $pdo->prepare("
     SELECT sr.*, cq.question_text, cq.option_a, cq.option_b, cq.option_c, cq.option_d
     FROM student_responses sr
     JOIN career_questions cq ON sr.question_id = cq.id
-    WHERE sr.student_id = ? AND sr.category = ?
-    ORDER BY sr.id
+    WHERE sr.student_id = ? AND sr.created_at BETWEEN ? AND ?
+    ORDER BY sr.category, sr.id
 ");
-$stmt->execute([$user_id, $category]);
-$responses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$start = $latestDate;
+$end = $latestDate; // assuming same timestamp for simplicity; can use small buffer if needed
+$stmt2->execute([$user_id, $start, $end]);
+$responses = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$responses) {
-    die("No responses found for this category.");
-}
-
-// Function to get full text of the selected option
+// Function to get full text of selected option
 function getOptionText($resp) {
-    switch ($resp['selected_option']) {
-        case 'A': return $resp['option_a'];
-        case 'B': return $resp['option_b'];
-        case 'C': return $resp['option_c'];
-        case 'D': return $resp['option_d'];
-        default: return 'N/A';
-    }
+    return match ($resp['selected_option']) {
+        'A' => $resp['option_a'],
+        'B' => $resp['option_b'],
+        'C' => $resp['option_c'],
+        'D' => $resp['option_d'],
+        default => 'N/A',
+    };
 }
-
-// Tally categories (for breakdown)
-$category_count = [];
-foreach ($responses as $resp) {
-    $cat = $resp['category'];
-    $category_count[$cat] = ($category_count[$cat] ?? 0) + 1;
-}
-arsort($category_count);
-$top_category = array_key_first($category_count);
-
-// Fetch career suggestions
-$stmt = $pdo->prepare("SELECT suggestion FROM career_suggestions WHERE category = ?");
-$stmt->execute([$top_category]);
-$suggestions = $stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Career Assessment Report</title>
+<title>Latest Career Assessment Report</title>
 <style>
 body { font-family: "Segoe UI", Arial, sans-serif; margin: 40px; line-height: 1.6; color: #333; }
 .header { text-align: center; border-bottom: 2px solid #007BFF; padding-bottom: 15px; margin-bottom: 30px; }
@@ -70,8 +70,10 @@ body { font-family: "Segoe UI", Arial, sans-serif; margin: 40px; line-height: 1.
 h1 { margin: 0; color: #007BFF; }
 h2 { margin-top: 30px; color: #444; }
 .student-info { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; }
-.highlight { background: #e9f5ff; padding: 15px; border-radius: 8px; }
+.category-card { margin-bottom: 25px; padding: 20px; border-radius: 10px; background: #f9fbff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.category-card h3 { color: #1976d2; margin-top: 0; }
 ul { margin: 0; padding-left: 20px; }
+.highlight { background: #e9f5ff; padding: 15px; border-radius: 8px; }
 .print-btn { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #007BFF; color: white; border: none; border-radius: 6px; cursor: pointer; }
 .print-btn:hover { background: #0056b3; }
 @media print { .print-btn { display: none; } }
@@ -88,38 +90,30 @@ ul { margin: 0; padding-left: 20px; }
 <div class="student-info">
     <p><strong>Name:</strong> <?= htmlspecialchars($studentName) ?></p>
     <p><strong>Email:</strong> <?= htmlspecialchars($studentEmail) ?></p>
-    <p><strong>Category:</strong> <?= htmlspecialchars($category) ?></p>
+    <p><strong>Date of Assessment:</strong> <?= htmlspecialchars($latestDate) ?></p>
 </div>
 
-<h2>Your Answers</h2>
-<ul>
-    <?php foreach ($responses as $resp): ?>
-        <li>
-            <strong><?= htmlspecialchars($resp['question_text']) ?></strong><br>
-            Selected Answer: <?= htmlspecialchars($resp['selected_option']) ?> - <?= htmlspecialchars(getOptionText($resp)) ?>
-        </li>
-    <?php endforeach; ?>
-</ul>
-
-<h2>Category Breakdown</h2>
-<ul>
-    <?php foreach ($category_count as $cat => $count): ?>
-        <li><?= htmlspecialchars($cat) ?>: <?= $count ?> answers</li>
-    <?php endforeach; ?>
-</ul>
-
-<h2>Recommended Career Paths</h2>
-<?php if (!empty($suggestions)): ?>
+<?php foreach ($results as $res): ?>
+<div class="category-card">
+    <h3>Category: <?= htmlspecialchars($res['category']) ?></h3>
+    <p><strong>Total Score:</strong> <?= htmlspecialchars($res['total_score']) ?></p>
+    <h4>Your Answers:</h4>
+    <ul>
+        <?php foreach ($responses as $resp): ?>
+            <?php if ($resp['category'] === $res['category']): ?>
+                <li>
+                    <strong><?= htmlspecialchars($resp['question_text']) ?></strong><br>
+                    Selected Answer: <?= htmlspecialchars($resp['selected_option']) ?> - <?= htmlspecialchars(getOptionText($resp)) ?>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+    <h4>Recommended Career Paths:</h4>
     <div class="highlight">
-        <ul>
-            <?php foreach ($suggestions as $s): ?>
-                <li><?= htmlspecialchars($s) ?></li>
-            <?php endforeach; ?>
-        </ul>
+        <p><?= nl2br(htmlspecialchars($res['recommendation'] ?? 'No recommendation available')) ?></p>
     </div>
-<?php else: ?>
-    <p>No career suggestions available for this category.</p>
-<?php endif; ?>
+</div>
+<?php endforeach; ?>
 
 <br><br>
 <p><em>Generated by OrientaCore Career Guidance System</em></p>

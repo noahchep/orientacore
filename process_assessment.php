@@ -52,9 +52,11 @@ foreach ($questions as $q) {
     $totalScore += $score;
 }
 
-// Save responses in career_responses table
-$insertStmt = $pdo->prepare("INSERT INTO student_responses (student_id, question_id, selected_option, category, created_at)
-VALUES (:student_id, :question_id, :selected_option, :category, NOW())");
+// Save responses in student_responses table
+$insertStmt = $pdo->prepare("
+    INSERT INTO student_responses (student_id, question_id, selected_option, category, created_at)
+    VALUES (:student_id, :question_id, :selected_option, :category, NOW())
+");
 
 try {
     $pdo->beginTransaction();
@@ -72,6 +74,34 @@ try {
         'category' => $category,
         'score' => $totalScore
     ]);
+
+    // Fetch career recommendation based on score range
+    $recommendationStmt = $pdo->prepare("
+        SELECT recommended_careers
+        FROM career_recommendations
+        WHERE category = :category
+          AND :score BETWEEN min_score AND max_score
+        LIMIT 1
+    ");
+    $recommendationStmt->execute([
+        'category' => $category,
+        'score' => $totalScore
+    ]);
+    $recommendation = $recommendationStmt->fetchColumn();
+
+    // Save recommendation to student_career_results
+    if ($recommendation) {
+        $pdo->prepare("
+            INSERT INTO student_career_results (student_id, category, total_score, recommendation, created_at)
+            VALUES (:student_id, :category, :total_score, :recommendation, NOW())
+            ON DUPLICATE KEY UPDATE total_score = :total_score, recommendation = :recommendation, created_at = NOW()
+        ")->execute([
+            'student_id' => $_SESSION['user_id'],
+            'category' => $category,
+            'total_score' => $totalScore,
+            'recommendation' => $recommendation
+        ]);
+    }
 
     $pdo->commit();
     header("Location: assessment_results.php?category=" . urlencode($category) . "&success=1");

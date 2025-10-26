@@ -1,0 +1,38 @@
+[
+    {
+        "timestamp": "2025-10-25T11:09:03+02:00",
+        "ip": "::1",
+        "scores": {
+            "organized": 4,
+            "analytical": 2,
+            "technical": 2,
+            "creative": 1,
+            "social": 0,
+            "leadership": 0
+        }
+    },
+    {
+        "timestamp": "2025-10-25T11:17:40+02:00",
+        "ip": "::1",
+        "scores": {
+            "creative": 2,
+            "social": 2,
+            "technical": 2,
+            "leadership": 2,
+            "analytical": 1,
+            "organized": 1
+        }
+    },
+    {
+        "timestamp": "2025-10-25T11:18:07+02:00",
+        "ip": "::1",
+        "scores": {
+            "creative": 0,
+            "analytical": 0,
+            "social": 0,
+            "technical": 0,
+            "leadership": 0,
+            "organized": 0
+        }
+    }
+]

@@ -2,7 +2,7 @@
 session_start();
 require 'db.php';
 
-// Make sure student is logged in
+// Ensure student is logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
     header("Location: login.php");
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
 
 $student_id = $_SESSION['user_id'];
 
-// Fetch the student's name
+// Fetch student's name
 $stmt = $pdo->prepare("SELECT name FROM users WHERE id = ?");
 $stmt->execute([$student_id]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -19,7 +19,7 @@ $student_name = $student ? $student['name'] : '';
 $reports = [];
 
 try {
-    // Fetch all reports written for this student
+    // Fetch all counseling reports for this student
     $stmt = $pdo->prepare("SELECT * FROM counselor_reports WHERE student_name = ? ORDER BY created_at DESC");
     $stmt->execute([$student_name]);
     $reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -127,12 +127,14 @@ try {
       background: linear-gradient(90deg, #2196f3, #1976d2);
       color: white;
       border: none;
-      padding: 8px 14px;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
       font-weight: 500;
       transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn:hover {
@@ -146,6 +148,15 @@ try {
       font-style: italic;
       margin-top: 30px;
       font-size: 16px;
+    }
+
+    .assessment-buttons {
+      text-align: center;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     @media print {
@@ -209,6 +220,12 @@ try {
     <?php else: ?>
       <p class="no-report">No reports available for you yet.</p>
     <?php endif; ?>
+
+    <!-- Career and Behaviour Assessment Buttons -->
+    <div class="assessment-buttons">
+      <a href="view_career_assessment.php" class="btn">View Career Assessment Results</a>
+      <a href="view_behaviour_assessment.php" class="btn">View Behaviour Assessment Results</a>
+    </div>
   </div>
 
 </body>

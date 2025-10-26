@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2025 at 12:26 AM
+-- Generation Time: Oct 26, 2025 at 07:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -51,27 +51,6 @@ CREATE TABLE `career_assessments` (
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `career_assessments`
---
-
-INSERT INTO `career_assessments` (`id`, `user_id`, `assessment_type`, `responses`, `score`, `result`, `created_at`, `updated_at`) VALUES
-(24, 10, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"17\":{\"question_id\":\"17\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"18\":{\"question_id\":\"18\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"19\":{\"question_id\":\"19\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"20\":{\"question_id\":\"20\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"21\":{\"question_id\":\"21\",\"answer\":\"D\",\"category\":\"Creative\",\"score\":1},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"25\":{\"question_id\":\"25\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"26\":{\"question_id\":\"26\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"27\":{\"question_id\":\"27\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"28\":{\"question_id\":\"28\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"29\":{\"question_id\":\"29\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"30\":{\"question_id\":\"30\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"31\":{\"question_id\":\"31\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"32\":{\"question_id\":\"32\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"33\":{\"question_id\":\"33\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"34\":{\"question_id\":\"34\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"35\":{\"question_id\":\"35\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"36\":{\"question_id\":\"36\",\"answer\":\"D\",\"category\":\"Social\",\"score\":1},\"37\":{\"question_id\":\"37\",\"answer\":\"D\",\"category\":\"Social\",\"score\":1},\"38\":{\"question_id\":\"38\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"39\":{\"question_id\":\"39\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"40\":{\"question_id\":\"40\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"41\":{\"question_id\":\"41\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"42\":{\"question_id\":\"42\",\"answer\":\"A\",\"category\":\"Practical\",\"score\":4},\"43\":{\"question_id\":\"43\",\"answer\":\"A\",\"category\":\"Practical\",\"score\":4},\"44\":{\"question_id\":\"44\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"45\":{\"question_id\":\"45\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3}}', '67', 'Graphic Designer', '2025-10-10 08:30:04', NULL),
-(25, 10, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"17\":{\"question_id\":\"17\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"18\":{\"question_id\":\"18\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"19\":{\"question_id\":\"19\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"20\":{\"question_id\":\"20\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"21\":{\"question_id\":\"21\",\"answer\":\"D\",\"category\":\"Creative\",\"score\":1},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"25\":{\"question_id\":\"25\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"26\":{\"question_id\":\"26\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"27\":{\"question_id\":\"27\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"28\":{\"question_id\":\"28\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"29\":{\"question_id\":\"29\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"30\":{\"question_id\":\"30\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"31\":{\"question_id\":\"31\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"32\":{\"question_id\":\"32\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"33\":{\"question_id\":\"33\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"34\":{\"question_id\":\"34\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"35\":{\"question_id\":\"35\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"36\":{\"question_id\":\"36\",\"answer\":\"D\",\"category\":\"Social\",\"score\":1},\"37\":{\"question_id\":\"37\",\"answer\":\"D\",\"category\":\"Social\",\"score\":1},\"38\":{\"question_id\":\"38\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"39\":{\"question_id\":\"39\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"40\":{\"question_id\":\"40\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"41\":{\"question_id\":\"41\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"42\":{\"question_id\":\"42\",\"answer\":\"A\",\"category\":\"Practical\",\"score\":4},\"43\":{\"question_id\":\"43\",\"answer\":\"A\",\"category\":\"Practical\",\"score\":4},\"44\":{\"question_id\":\"44\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"45\":{\"question_id\":\"45\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3}}', '67', 'Graphic Designer', '2025-10-10 08:31:42', NULL),
-(26, 10, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"17\":{\"question_id\":\"17\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"18\":{\"question_id\":\"18\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"19\":{\"question_id\":\"19\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"20\":{\"question_id\":\"20\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"21\":{\"question_id\":\"21\",\"answer\":\"D\",\"category\":\"Creative\",\"score\":1},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"25\":{\"question_id\":\"25\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"26\":{\"question_id\":\"26\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"27\":{\"question_id\":\"27\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"28\":{\"question_id\":\"28\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"29\":{\"question_id\":\"29\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"30\":{\"question_id\":\"30\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"31\":{\"question_id\":\"31\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"32\":{\"question_id\":\"32\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"33\":{\"question_id\":\"33\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"34\":{\"question_id\":\"34\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"35\":{\"question_id\":\"35\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"36\":{\"question_id\":\"36\",\"answer\":\"D\",\"category\":\"Social\",\"score\":1},\"37\":{\"question_id\":\"37\",\"answer\":\"D\",\"category\":\"Social\",\"score\":1},\"38\":{\"question_id\":\"38\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"39\":{\"question_id\":\"39\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"40\":{\"question_id\":\"40\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"41\":{\"question_id\":\"41\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"42\":{\"question_id\":\"42\",\"answer\":\"A\",\"category\":\"Practical\",\"score\":4},\"43\":{\"question_id\":\"43\",\"answer\":\"A\",\"category\":\"Practical\",\"score\":4},\"44\":{\"question_id\":\"44\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"45\":{\"question_id\":\"45\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3}}', '67', 'Graphic Designer', '2025-10-10 08:32:14', NULL),
-(27, 10, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"17\":{\"question_id\":\"17\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"18\":{\"question_id\":\"18\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"19\":{\"question_id\":\"19\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"20\":{\"question_id\":\"20\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"21\":{\"question_id\":\"21\",\"answer\":\"D\",\"category\":\"Creative\",\"score\":1},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"25\":{\"question_id\":\"25\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"26\":{\"question_id\":\"26\",\"answer\":\"D\",\"category\":\"Analytical\",\"score\":1},\"27\":{\"question_id\":\"27\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"28\":{\"question_id\":\"28\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"29\":{\"question_id\":\"29\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"30\":{\"question_id\":\"30\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"31\":{\"question_id\":\"31\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"32\":{\"question_id\":\"32\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"33\":{\"question_id\":\"33\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"34\":{\"question_id\":\"34\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"35\":{\"question_id\":\"35\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"36\":{\"question_id\":\"36\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"37\":{\"question_id\":\"37\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"38\":{\"question_id\":\"38\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"39\":{\"question_id\":\"39\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"40\":{\"question_id\":\"40\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"41\":{\"question_id\":\"41\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"42\":{\"question_id\":\"42\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"43\":{\"question_id\":\"43\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"44\":{\"question_id\":\"44\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"45\":{\"question_id\":\"45\",\"answer\":\"D\",\"category\":\"Practical\",\"score\":1}}', '70', 'Analytical|Data Scientist', '2025-10-10 08:34:54', NULL),
-(28, 10, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"17\":{\"question_id\":\"17\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"18\":{\"question_id\":\"18\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"19\":{\"question_id\":\"19\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"20\":{\"question_id\":\"20\",\"answer\":\"D\",\"category\":\"Creative\",\"score\":1},\"21\":{\"question_id\":\"21\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"26\":{\"question_id\":\"26\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"27\":{\"question_id\":\"27\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"28\":{\"question_id\":\"28\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"29\":{\"question_id\":\"29\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"30\":{\"question_id\":\"30\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"31\":{\"question_id\":\"31\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"32\":{\"question_id\":\"32\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"33\":{\"question_id\":\"33\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"34\":{\"question_id\":\"34\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"35\":{\"question_id\":\"35\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"36\":{\"question_id\":\"36\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"37\":{\"question_id\":\"37\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"38\":{\"question_id\":\"38\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"39\":{\"question_id\":\"39\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"40\":{\"question_id\":\"40\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"42\":{\"question_id\":\"42\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"43\":{\"question_id\":\"43\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"44\":{\"question_id\":\"44\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"45\":{\"question_id\":\"45\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2}}', '70', 'Analytical|Data Scientist', '2025-10-10 10:21:37', NULL),
-(29, 10, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"17\":{\"question_id\":\"17\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"18\":{\"question_id\":\"18\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"19\":{\"question_id\":\"19\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"20\":{\"question_id\":\"20\",\"answer\":\"D\",\"category\":\"Creative\",\"score\":1},\"21\":{\"question_id\":\"21\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"26\":{\"question_id\":\"26\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"27\":{\"question_id\":\"27\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"28\":{\"question_id\":\"28\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"29\":{\"question_id\":\"29\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"30\":{\"question_id\":\"30\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"31\":{\"question_id\":\"31\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"32\":{\"question_id\":\"32\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"33\":{\"question_id\":\"33\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"34\":{\"question_id\":\"34\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"35\":{\"question_id\":\"35\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"36\":{\"question_id\":\"36\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"37\":{\"question_id\":\"37\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"38\":{\"question_id\":\"38\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"39\":{\"question_id\":\"39\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"40\":{\"question_id\":\"40\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"42\":{\"question_id\":\"42\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"43\":{\"question_id\":\"43\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"44\":{\"question_id\":\"44\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"45\":{\"question_id\":\"45\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2}}', '70', 'Analytical|Data Scientist', '2025-10-10 10:28:26', NULL),
-(30, 8, 'Career Fit Test', '{\"16\":{\"question_id\":\"16\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"17\":{\"question_id\":\"17\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"18\":{\"question_id\":\"18\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"19\":{\"question_id\":\"19\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"20\":{\"question_id\":\"20\",\"answer\":\"A\",\"category\":\"Creative\",\"score\":4},\"21\":{\"question_id\":\"21\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"22\":{\"question_id\":\"22\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"23\":{\"question_id\":\"23\",\"answer\":\"B\",\"category\":\"Creative\",\"score\":3},\"24\":{\"question_id\":\"24\",\"answer\":\"C\",\"category\":\"Creative\",\"score\":2},\"26\":{\"question_id\":\"26\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"27\":{\"question_id\":\"27\",\"answer\":\"A\",\"category\":\"Analytical\",\"score\":4},\"28\":{\"question_id\":\"28\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"29\":{\"question_id\":\"29\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"30\":{\"question_id\":\"30\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"31\":{\"question_id\":\"31\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"32\":{\"question_id\":\"32\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"33\":{\"question_id\":\"33\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"34\":{\"question_id\":\"34\",\"answer\":\"B\",\"category\":\"Analytical\",\"score\":3},\"35\":{\"question_id\":\"35\",\"answer\":\"C\",\"category\":\"Analytical\",\"score\":2},\"36\":{\"question_id\":\"36\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"37\":{\"question_id\":\"37\",\"answer\":\"A\",\"category\":\"Social\",\"score\":4},\"38\":{\"question_id\":\"38\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"39\":{\"question_id\":\"39\",\"answer\":\"B\",\"category\":\"Social\",\"score\":3},\"40\":{\"question_id\":\"40\",\"answer\":\"C\",\"category\":\"Social\",\"score\":2},\"42\":{\"question_id\":\"42\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"43\":{\"question_id\":\"43\",\"answer\":\"C\",\"category\":\"Practical\",\"score\":2},\"44\":{\"question_id\":\"44\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3},\"45\":{\"question_id\":\"45\",\"answer\":\"B\",\"category\":\"Practical\",\"score\":3}}', '80', 'Analytical|Data Scientist', '2025-10-10 11:29:08', NULL),
-(31, 10, 'Career Fit Test', '{\"56\":{\"question_id\":\"56\",\"answer\":\"B\",\"category\":\"Interests\",\"score\":3},\"57\":{\"question_id\":\"57\",\"answer\":\"A\",\"category\":\"Interests\",\"score\":4},\"58\":{\"question_id\":\"58\",\"answer\":\"A\",\"category\":\"Interests\",\"score\":4},\"59\":{\"question_id\":\"59\",\"answer\":\"D\",\"category\":\"Interests\",\"score\":1},\"60\":{\"question_id\":\"60\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"61\":{\"question_id\":\"61\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"62\":{\"question_id\":\"62\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"63\":{\"question_id\":\"63\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"64\":{\"question_id\":\"64\",\"answer\":\"D\",\"category\":\"Interests\",\"score\":1},\"65\":{\"question_id\":\"65\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2}}', '23', 'No suggestion available.', '2025-10-10 11:40:39', NULL),
-(32, 10, 'Career Fit Test', '{\"56\":{\"question_id\":\"56\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"57\":{\"question_id\":\"57\",\"answer\":\"B\",\"category\":\"Interests\",\"score\":3},\"58\":{\"question_id\":\"58\",\"answer\":\"B\",\"category\":\"Interests\",\"score\":3},\"59\":{\"question_id\":\"59\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"60\":{\"question_id\":\"60\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"61\":{\"question_id\":\"61\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"62\":{\"question_id\":\"62\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"63\":{\"question_id\":\"63\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"64\":{\"question_id\":\"64\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"65\":{\"question_id\":\"65\",\"answer\":\"C\",\"category\":\"Interests\",\"score\":2},\"66\":{\"question_id\":\"66\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"67\":{\"question_id\":\"67\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"68\":{\"question_id\":\"68\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"69\":{\"question_id\":\"69\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"70\":{\"question_id\":\"70\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"71\":{\"question_id\":\"71\",\"answer\":\"C\",\"category\":\"Skills\",\"score\":2},\"72\":{\"question_id\":\"72\",\"answer\":\"C\",\"category\":\"Skills\",\"score\":2},\"73\":{\"question_id\":\"73\",\"answer\":\"C\",\"category\":\"Skills\",\"score\":2},\"74\":{\"question_id\":\"74\",\"answer\":\"C\",\"category\":\"Skills\",\"score\":2},\"75\":{\"question_id\":\"75\",\"answer\":\"C\",\"category\":\"Skills\",\"score\":2},\"76\":{\"question_id\":\"76\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4},\"77\":{\"question_id\":\"77\",\"answer\":\"C\",\"category\":\"Work Preference\",\"score\":2},\"78\":{\"question_id\":\"78\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"79\":{\"question_id\":\"79\",\"answer\":\"B\",\"category\":\"Work Preference\",\"score\":3},\"80\":{\"question_id\":\"80\",\"answer\":\"B\",\"category\":\"Work Preference\",\"score\":3}}', '55', 'No suggestion available.', '2025-10-10 12:19:36', NULL),
-(33, 10, 'Career Fit Test', '{\"76\":{\"question_id\":\"76\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4},\"77\":{\"question_id\":\"77\",\"answer\":\"B\",\"category\":\"Work Preference\",\"score\":3},\"78\":{\"question_id\":\"78\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"79\":{\"question_id\":\"79\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"80\":{\"question_id\":\"80\",\"answer\":\"B\",\"category\":\"Work Preference\",\"score\":3}}', '12', 'No suggestion available.', '2025-10-10 12:26:47', NULL),
-(34, 10, 'Career Fit Test', '{\"76\":{\"question_id\":\"76\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4},\"77\":{\"question_id\":\"77\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4},\"78\":{\"question_id\":\"78\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4},\"79\":{\"question_id\":\"79\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4},\"80\":{\"question_id\":\"80\",\"answer\":\"A\",\"category\":\"Work Preference\",\"score\":4}}', '20', 'No suggestion available.', '2025-10-10 12:27:12', NULL),
-(35, 10, 'Career Fit Test', '{\"76\":{\"question_id\":\"76\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"77\":{\"question_id\":\"77\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"78\":{\"question_id\":\"78\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"79\":{\"question_id\":\"79\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1},\"80\":{\"question_id\":\"80\",\"answer\":\"D\",\"category\":\"Work Preference\",\"score\":1}}', '5', 'No suggestion available.', '2025-10-10 12:27:32', NULL),
-(36, 8, 'Career Fit Test', '{\"66\":{\"question_id\":\"66\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},\"67\":{\"question_id\":\"67\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"68\":{\"question_id\":\"68\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},\"69\":{\"question_id\":\"69\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},\"70\":{\"question_id\":\"70\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3}}', '14', 'No suggestion available.', '2025-10-10 12:47:27', NULL),
-(37, 8, 'Career Fit Test', '{\"66\":{\"question_id\":\"66\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},\"67\":{\"question_id\":\"67\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},\"68\":{\"question_id\":\"68\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},\"69\":{\"question_id\":\"69\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},\"70\":{\"question_id\":\"70\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3}}', '14', 'No suggestion available.', '2025-10-10 12:47:58', NULL),
-(38, 8, 'Personality Assessment', '[{\"question_id\":\"66\",\"question\":\"I prefer to plan ahead rather than act spontaneously.\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},{\"question_id\":\"67\",\"question\":\"I enjoy taking initiative and leading group projects.\",\"answer\":\"C\",\"category\":\"Personality\",\"score\":2},{\"question_id\":\"68\",\"question\":\"I stay calm and composed even under pressure.\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},{\"question_id\":\"69\",\"question\":\"I like meeting new people and socializing frequently.\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3},{\"question_id\":\"70\",\"question\":\"I adapt quickly to new situations and changes.\",\"answer\":\"B\",\"category\":\"Personality\",\"score\":3}]', '14', 'No suggestion available.', '2025-10-10 12:53:55', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -80,9 +59,9 @@ INSERT INTO `career_assessments` (`id`, `user_id`, `assessment_type`, `responses
 
 CREATE TABLE `career_category_scores` (
   `id` int(11) NOT NULL,
-  `student_id` int(10) UNSIGNED NOT NULL,
-  `category` varchar(50) NOT NULL,
-  `score` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `score` decimal(6,2) NOT NULL DEFAULT 0.00,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -91,9 +70,12 @@ CREATE TABLE `career_category_scores` (
 --
 
 INSERT INTO `career_category_scores` (`id`, `student_id`, `category`, `score`, `created_at`) VALUES
-(15, 8, 'Skills', 10, '2025-10-10 16:07:21'),
-(16, 8, 'Personality', 13, '2025-10-15 08:08:20'),
-(17, 8, 'Work Preference', 9, '2025-10-14 15:47:41');
+(1, 10, 'Personality', 20.00, '2025-10-25 13:58:59'),
+(6, 10, 'Interests', 36.00, '2025-10-25 13:21:46'),
+(8, 10, 'Agriculture & Natural Resources', 29.00, '2025-10-25 14:44:27'),
+(9, 10, 'Research & Data Analytics', 19.00, '2025-10-25 15:56:51'),
+(18, 10, 'Finance & Accounting', 10.00, '2025-10-26 20:00:33'),
+(19, 10, 'Hospitality & Tourism', 19.00, '2025-10-26 19:56:47');
 
 -- --------------------------------------------------------
 
@@ -117,30 +99,207 @@ CREATE TABLE `career_questions` (
 --
 
 INSERT INTO `career_questions` (`id`, `question_text`, `option_a`, `option_b`, `option_c`, `option_d`, `category`, `created_at`) VALUES
-(56, 'I enjoy analyzing problems and finding logical solutions.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(57, 'I enjoy expressing myself through art, design, or other creative projects.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(58, 'I enjoy helping others or working in roles where I can support people.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(59, 'I enjoy organizing tasks, events, or projects and making sure everything runs smoothly.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(60, 'I enjoy using technology, gadgets, or working with tools and equipment.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(61, 'I prefer working in a team rather than alone.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(62, 'I stay calm and focused when facing challenges.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(63, 'I am confident in my ability to communicate ideas clearly to others.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(64, 'I enjoy tasks that require creativity and coming up with new ideas.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Interests', '2025-10-10 11:39:43'),
-(66, 'I prefer to plan ahead rather than act spontaneously.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Personality', '2025-10-10 11:43:25'),
-(67, 'I enjoy taking initiative and leading group projects.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Personality', '2025-10-10 11:43:25'),
-(68, 'I stay calm and composed even under pressure.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Personality', '2025-10-10 11:43:25'),
-(69, 'I like meeting new people and socializing frequently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Personality', '2025-10-10 11:43:25'),
-(70, 'I adapt quickly to new situations and changes.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Personality', '2025-10-10 11:43:25'),
-(71, 'I am confident in solving complex problems independently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Skills', '2025-10-10 11:43:44'),
-(72, 'I can communicate my ideas clearly in writing and verbally.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Skills', '2025-10-10 11:43:44'),
-(73, 'I can analyze data and draw meaningful conclusions.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Skills', '2025-10-10 11:43:44'),
-(74, 'I have good organizational and time-management skills.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Skills', '2025-10-10 11:43:44'),
-(75, 'I can quickly learn and use new tools, software, or equipment.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Skills', '2025-10-10 11:43:44'),
-(76, 'I prefer working independently rather than in a team.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Preference', '2025-10-10 11:43:59'),
-(77, 'I enjoy tasks that require creativity and innovation.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Preference', '2025-10-10 11:43:59'),
-(78, 'I prefer structured work with clear rules and procedures.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Preference', '2025-10-10 11:43:59'),
-(79, 'I enjoy roles where I can interact with people frequently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Preference', '2025-10-10 11:43:59'),
-(80, 'I prefer flexible work schedules over rigid routines.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Preference', '2025-10-10 11:43:59');
+(131, 'Do you enjoy working outdoors in nature?', 'Yes, always', 'Sometimes', 'Rarely', 'Never', 'Agriculture & Natural Resources', '2025-10-25 11:56:45'),
+(132, 'Are you interested in plant and animal sciences?', 'Very interested', 'Somewhat interested', 'Not much', 'Not at all', 'Agriculture & Natural Resources', '2025-10-25 11:56:45'),
+(133, 'Would you enjoy managing a farm or agricultural project?', 'Yes', 'Maybe', 'Not sure', 'No', 'Agriculture & Natural Resources', '2025-10-25 11:56:45'),
+(134, 'Do you like solving environmental or ecological problems?', 'Yes, a lot', 'Sometimes', 'Rarely', 'Not at all', 'Agriculture & Natural Resources', '2025-10-25 11:56:45'),
+(135, 'Are you interested in sustainable farming or forestry?', 'Yes', 'A little', 'Not really', 'No', 'Agriculture & Natural Resources', '2025-10-25 11:56:45'),
+(136, 'Do you enjoy designing buildings or structures?', 'Yes, very much', 'Somewhat', 'Not really', 'No', 'Architecture & Construction', '2025-10-25 11:56:45'),
+(137, 'Are you good at visualizing spaces and layouts?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Architecture & Construction', '2025-10-25 11:56:45'),
+(138, 'Do you enjoy working with construction materials or tools?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Architecture & Construction', '2025-10-25 11:56:45'),
+(139, 'Do you like planning and managing construction projects?', 'Yes', 'Maybe', 'Not sure', 'No', 'Architecture & Construction', '2025-10-25 11:56:45'),
+(140, 'Are you interested in civil engineering or urban planning?', 'Yes', 'Somewhat', 'Not really', 'No', 'Architecture & Construction', '2025-10-25 11:56:45'),
+(141, 'Do you enjoy creating visual art or graphic designs?', 'Yes, always', 'Sometimes', 'Rarely', 'Never', 'Arts, Design, Entertainment & Media', '2025-10-25 11:56:46'),
+(142, 'Are you interested in music, film, or performing arts?', 'Yes, very much', 'Somewhat', 'Not really', 'No', 'Arts, Design, Entertainment & Media', '2025-10-25 11:56:46'),
+(143, 'Do you like writing stories, articles, or scripts?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Arts, Design, Entertainment & Media', '2025-10-25 11:56:46'),
+(144, 'Do you enjoy experimenting with new creative techniques?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Arts, Design, Entertainment & Media', '2025-10-25 11:56:46'),
+(145, 'Do you follow trends in media and entertainment?', 'Yes, closely', 'Somewhat', 'Not much', 'No', 'Arts, Design, Entertainment & Media', '2025-10-25 11:56:46'),
+(146, 'Do you like organizing and managing tasks efficiently?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Business Management & Administration', '2025-10-25 11:56:46'),
+(147, 'Are you interested in leading teams and projects?', 'Yes', 'Somewhat', 'Not really', 'No', 'Business Management & Administration', '2025-10-25 11:56:46'),
+(148, 'Do you enjoy analyzing business performance data?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Business Management & Administration', '2025-10-25 11:56:46'),
+(149, 'Do you like planning strategies to improve productivity?', 'Yes', 'Maybe', 'Not sure', 'No', 'Business Management & Administration', '2025-10-25 11:56:46'),
+(150, 'Are you comfortable making decisions that affect a group?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Business Management & Administration', '2025-10-25 11:56:46'),
+(151, 'Do you enjoy teaching or explaining concepts to others?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Education & Training', '2025-10-25 11:56:46'),
+(152, 'Are you patient and understanding when helping learners?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Education & Training', '2025-10-25 11:56:46'),
+(153, 'Do you like developing lesson plans or training materials?', 'Yes', 'Somewhat', 'Not really', 'No', 'Education & Training', '2025-10-25 11:56:46'),
+(154, 'Do you enjoy evaluating and improving student performance?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Education & Training', '2025-10-25 11:56:46'),
+(155, 'Are you interested in curriculum development or educational research?', 'Yes', 'Somewhat', 'Not really', 'No', 'Education & Training', '2025-10-25 11:56:46'),
+(156, 'Do you enjoy working with numbers and calculations?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Finance & Accounting', '2025-10-25 11:56:47'),
+(157, 'Are you interested in budgeting or financial planning?', 'Yes', 'Somewhat', 'Not really', 'No', 'Finance & Accounting', '2025-10-25 11:56:47'),
+(158, 'Do you like analyzing financial statements and reports?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Finance & Accounting', '2025-10-25 11:56:47'),
+(159, 'Do you enjoy auditing or reviewing accounts?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Finance & Accounting', '2025-10-25 11:56:47'),
+(160, 'Are you interested in investments and stock market analysis?', 'Yes', 'Somewhat', 'Not really', 'No', 'Finance & Accounting', '2025-10-25 11:56:47'),
+(161, 'Do you enjoy studying laws, policies, or governance?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Government, Public Administration & Policy', '2025-10-25 11:56:48'),
+(162, 'Are you interested in public service and helping communities?', 'Yes', 'Somewhat', 'Not really', 'No', 'Government, Public Administration & Policy', '2025-10-25 11:56:48'),
+(163, 'Do you like analyzing political or economic issues?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Government, Public Administration & Policy', '2025-10-25 11:56:48'),
+(164, 'Do you enjoy planning or managing public projects?', 'Yes', 'Maybe', 'Not sure', 'No', 'Government, Public Administration & Policy', '2025-10-25 11:56:48'),
+(165, 'Are you interested in policy research or diplomacy?', 'Yes', 'Somewhat', 'Not really', 'No', 'Government, Public Administration & Policy', '2025-10-25 11:56:48'),
+(166, 'Do you enjoy caring for people and improving their health?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Health Science & Allied Professions', '2025-10-25 11:56:48'),
+(167, 'Are you interested in biology or medical sciences?', 'Yes', 'Somewhat', 'Not really', 'No', 'Health Science & Allied Professions', '2025-10-25 11:56:48'),
+(168, 'Do you like working in hospitals or clinical settings?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Health Science & Allied Professions', '2025-10-25 11:56:48'),
+(169, 'Do you enjoy diagnosing or treating patients?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Health Science & Allied Professions', '2025-10-25 11:56:48'),
+(170, 'Are you interested in nutrition, therapy, or pharmacy?', 'Yes', 'Somewhat', 'Not really', 'No', 'Health Science & Allied Professions', '2025-10-25 11:56:48'),
+(171, 'Do you enjoy meeting and helping new people?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Hospitality & Tourism', '2025-10-25 11:56:48'),
+(172, 'Are you interested in managing hotels, restaurants, or travel?', 'Yes', 'Somewhat', 'Not really', 'No', 'Hospitality & Tourism', '2025-10-25 11:56:48'),
+(173, 'Do you like organizing events or tours?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Hospitality & Tourism', '2025-10-25 11:56:48'),
+(174, 'Do you enjoy cooking or working in the culinary arts?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Hospitality & Tourism', '2025-10-25 11:56:48'),
+(175, 'Are you comfortable with customer service roles?', 'Yes', 'Somewhat', 'Not really', 'No', 'Hospitality & Tourism', '2025-10-25 11:56:48'),
+(176, 'Do you enjoy helping others solve personal problems?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Human Services / Community & Social Services', '2025-10-25 11:56:49'),
+(177, 'Are you interested in counseling or social work?', 'Yes', 'Somewhat', 'Not really', 'No', 'Human Services / Community & Social Services', '2025-10-25 11:56:49'),
+(178, 'Do you like volunteering or community service?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Human Services / Community & Social Services', '2025-10-25 11:56:49'),
+(179, 'Do you enjoy teaching life skills or mentoring?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Human Services / Community & Social Services', '2025-10-25 11:56:49'),
+(180, 'Are you interested in nonprofit management or advocacy?', 'Yes', 'Somewhat', 'Not really', 'No', 'Human Services / Community & Social Services', '2025-10-25 11:56:49'),
+(181, 'Do you enjoy programming or software development?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Information Technology & Computer Science', '2025-10-25 11:56:49'),
+(182, 'Are you interested in cybersecurity or networks?', 'Yes', 'Somewhat', 'Not really', 'No', 'Information Technology & Computer Science', '2025-10-25 11:56:49'),
+(183, 'Do you like working with databases or data analysis?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Information Technology & Computer Science', '2025-10-25 11:56:49'),
+(184, 'Do you enjoy creating apps, websites, or digital tools?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Information Technology & Computer Science', '2025-10-25 11:56:49'),
+(185, 'Are you interested in IT support or system administration?', 'Yes', 'Somewhat', 'Not really', 'No', 'Information Technology & Computer Science', '2025-10-25 11:56:49'),
+(186, 'Do you enjoy learning about laws and legal systems?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Law, Public Safety, Corrections & Security', '2025-10-25 12:02:37'),
+(187, 'Are you interested in maintaining public safety or security?', 'Yes', 'Somewhat', 'Not really', 'No', 'Law, Public Safety, Corrections & Security', '2025-10-25 12:02:37'),
+(188, 'Do you like solving disputes or mediating conflicts?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Law, Public Safety, Corrections & Security', '2025-10-25 12:02:37'),
+(189, 'Do you enjoy investigative work or forensic analysis?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Law, Public Safety, Corrections & Security', '2025-10-25 12:02:37'),
+(190, 'Are you comfortable enforcing rules or regulations?', 'Yes', 'Somewhat', 'Not really', 'No', 'Law, Public Safety, Corrections & Security', '2025-10-25 12:02:37'),
+(191, 'Do you enjoy working with machinery or production tools?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Manufacturing & Production', '2025-10-25 12:02:37'),
+(192, 'Are you interested in improving production efficiency?', 'Yes', 'Somewhat', 'Not really', 'No', 'Manufacturing & Production', '2025-10-25 12:02:37'),
+(193, 'Do you like quality control and ensuring standards?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Manufacturing & Production', '2025-10-25 12:02:37'),
+(194, 'Do you enjoy assembling or constructing products?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Manufacturing & Production', '2025-10-25 12:02:37'),
+(195, 'Are you interested in mechanical or industrial engineering?', 'Yes', 'Somewhat', 'Not really', 'No', 'Manufacturing & Production', '2025-10-25 12:02:37'),
+(196, 'Do you enjoy promoting products or services?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Marketing, Sales & Retail', '2025-10-25 12:02:39'),
+(197, 'Are you interested in analyzing market trends?', 'Yes', 'Somewhat', 'Not really', 'No', 'Marketing, Sales & Retail', '2025-10-25 12:02:39'),
+(198, 'Do you like communicating with clients or customers?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Marketing, Sales & Retail', '2025-10-25 12:02:39'),
+(199, 'Do you enjoy creating advertisements or campaigns?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Marketing, Sales & Retail', '2025-10-25 12:02:39'),
+(200, 'Are you comfortable negotiating deals or sales?', 'Yes', 'Somewhat', 'Not really', 'No', 'Marketing, Sales & Retail', '2025-10-25 12:02:39'),
+(201, 'Do you enjoy solving scientific or technical problems?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Science, Technology, Engineering & Mathematics (STEM)', '2025-10-25 12:02:39'),
+(202, 'Are you interested in mathematics or physics?', 'Yes', 'Somewhat', 'Not really', 'No', 'Science, Technology, Engineering & Mathematics (STEM)', '2025-10-25 12:02:39'),
+(203, 'Do you like conducting experiments or research?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Science, Technology, Engineering & Mathematics (STEM)', '2025-10-25 12:02:39'),
+(204, 'Do you enjoy designing or building technical projects?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Science, Technology, Engineering & Mathematics (STEM)', '2025-10-25 12:02:39'),
+(205, 'Are you interested in engineering or applied sciences?', 'Yes', 'Somewhat', 'Not really', 'No', 'Science, Technology, Engineering & Mathematics (STEM)', '2025-10-25 12:02:39'),
+(206, 'Do you enjoy planning transportation or delivery systems?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Transportation, Distribution & Logistics', '2025-10-25 12:02:40'),
+(207, 'Are you interested in driving or operating vehicles professionally?', 'Yes', 'Somewhat', 'Not really', 'No', 'Transportation, Distribution & Logistics', '2025-10-25 12:02:40'),
+(208, 'Do you like managing supply chains or logistics?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Transportation, Distribution & Logistics', '2025-10-25 12:02:40'),
+(209, 'Do you enjoy coordinating shipments and deliveries?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Transportation, Distribution & Logistics', '2025-10-25 12:02:40'),
+(210, 'Are you comfortable working in warehouse or distribution settings?', 'Yes', 'Somewhat', 'Not really', 'No', 'Transportation, Distribution & Logistics', '2025-10-25 12:02:40'),
+(211, 'Do you enjoy repairing or fixing equipment?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Skilled Trades & Vocational Work', '2025-10-25 12:02:40'),
+(212, 'Are you interested in carpentry, plumbing, or electrical work?', 'Yes', 'Somewhat', 'Not really', 'No', 'Skilled Trades & Vocational Work', '2025-10-25 12:02:40'),
+(213, 'Do you like working with your hands?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Skilled Trades & Vocational Work', '2025-10-25 12:02:40'),
+(214, 'Do you enjoy learning practical technical skills?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Skilled Trades & Vocational Work', '2025-10-25 12:02:40'),
+(215, 'Are you interested in operating machinery or tools?', 'Yes', 'Somewhat', 'Not really', 'No', 'Skilled Trades & Vocational Work', '2025-10-25 12:02:40'),
+(216, 'Do you enjoy performing music, dance, or theater?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Creative & Performing Arts', '2025-10-25 12:02:41'),
+(217, 'Are you interested in visual arts or creative expression?', 'Yes', 'Somewhat', 'Not really', 'No', 'Creative & Performing Arts', '2025-10-25 12:02:41'),
+(218, 'Do you like writing scripts, poetry, or stories?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Creative & Performing Arts', '2025-10-25 12:02:41'),
+(219, 'Do you enjoy directing or producing creative projects?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Creative & Performing Arts', '2025-10-25 12:02:41'),
+(220, 'Are you comfortable performing in front of an audience?', 'Yes', 'Somewhat', 'Not really', 'No', 'Creative & Performing Arts', '2025-10-25 12:02:41'),
+(221, 'Do you enjoy starting new projects or businesses?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Entrepreneurship & Start-ups', '2025-10-25 12:02:42'),
+(222, 'Are you interested in innovation and creative problem-solving?', 'Yes', 'Somewhat', 'Not really', 'No', 'Entrepreneurship & Start-ups', '2025-10-25 12:02:42'),
+(223, 'Do you like taking calculated risks in business?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Entrepreneurship & Start-ups', '2025-10-25 12:02:42'),
+(224, 'Do you enjoy managing people and resources?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Entrepreneurship & Start-ups', '2025-10-25 12:02:42'),
+(225, 'Are you interested in designing products or services?', 'Yes', 'Somewhat', 'Not really', 'No', 'Entrepreneurship & Start-ups', '2025-10-25 12:02:42'),
+(226, 'Do you enjoy collecting and analyzing data?', 'Yes, very much', 'Sometimes', 'Rarely', 'No', 'Research & Data Analytics', '2025-10-25 12:02:42'),
+(227, 'Are you interested in research projects and experiments?', 'Yes', 'Somewhat', 'Not really', 'No', 'Research & Data Analytics', '2025-10-25 12:02:42'),
+(228, 'Do you like interpreting trends and statistics?', 'Yes', 'Occasionally', 'Rarely', 'No', 'Research & Data Analytics', '2025-10-25 12:02:42'),
+(229, 'Do you enjoy writing reports or academic papers?', 'Yes', 'Sometimes', 'Rarely', 'No', 'Research & Data Analytics', '2025-10-25 12:02:42'),
+(230, 'Are you interested in evaluating policies or business strategies?', 'Yes', 'Somewhat', 'Not really', 'No', 'Research & Data Analytics', '2025-10-25 12:02:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `career_recommendations`
+--
+
+CREATE TABLE `career_recommendations` (
+  `id` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `min_score` int(11) NOT NULL,
+  `max_score` int(11) NOT NULL,
+  `recommended_careers` text NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `career_recommendations`
+--
+
+INSERT INTO `career_recommendations` (`id`, `category`, `min_score`, `max_score`, `recommended_careers`, `created_at`) VALUES
+(121, 'Agriculture & Natural Resources', 0, 5, 'Farm Assistant, Agricultural Technician', '2025-10-25 15:40:32'),
+(122, 'Agriculture & Natural Resources', 6, 10, 'Horticulturist, Field Officer', '2025-10-25 15:40:32'),
+(123, 'Agriculture & Natural Resources', 11, 15, 'Environmental Scientist, Farm Manager', '2025-10-25 15:40:32'),
+(124, 'Agriculture & Natural Resources', 16, 20, 'Agricultural Engineer, Forestry Specialist', '2025-10-25 15:40:32'),
+(125, 'Architecture & Construction', 0, 5, 'Construction Assistant, Draftsman', '2025-10-25 15:40:33'),
+(126, 'Architecture & Construction', 6, 10, 'Surveyor, Civil Technician', '2025-10-25 15:40:33'),
+(127, 'Architecture & Construction', 11, 15, 'Construction Manager, Urban Planner', '2025-10-25 15:40:33'),
+(128, 'Architecture & Construction', 16, 20, 'Architect, Civil Engineer', '2025-10-25 15:40:33'),
+(129, 'Arts, Design, Entertainment & Media', 0, 5, 'Photography Assistant, Junior Animator', '2025-10-25 15:40:34'),
+(130, 'Arts, Design, Entertainment & Media', 6, 10, 'Graphic Designer, Videographer', '2025-10-25 15:40:34'),
+(131, 'Arts, Design, Entertainment & Media', 11, 15, 'Animator, Journalist', '2025-10-25 15:40:34'),
+(132, 'Arts, Design, Entertainment & Media', 16, 20, 'Film Director, Music Producer', '2025-10-25 15:40:34'),
+(133, 'Business Management & Administration', 0, 5, 'Office Clerk, Assistant Coordinator', '2025-10-25 15:40:35'),
+(134, 'Business Management & Administration', 6, 10, 'HR Assistant, Junior Manager', '2025-10-25 15:40:35'),
+(135, 'Business Management & Administration', 11, 15, 'Operations Manager, Project Coordinator', '2025-10-25 15:40:35'),
+(136, 'Business Management & Administration', 16, 20, 'Business Analyst, Executive Manager', '2025-10-25 15:40:35'),
+(137, 'Education & Training', 0, 5, 'Teacher Assistant, Tutor', '2025-10-25 15:40:36'),
+(138, 'Education & Training', 6, 10, 'Trainer, Curriculum Assistant', '2025-10-25 15:40:36'),
+(139, 'Education & Training', 11, 15, 'Teacher, Education Consultant', '2025-10-25 15:40:36'),
+(140, 'Education & Training', 16, 20, 'Lecturer, Curriculum Developer', '2025-10-25 15:40:36'),
+(141, 'Finance & Accounting', 0, 5, 'Accounts Clerk, Bookkeeper', '2025-10-25 15:40:36'),
+(142, 'Finance & Accounting', 6, 10, 'Junior Accountant, Financial Assistant', '2025-10-25 15:40:36'),
+(143, 'Finance & Accounting', 11, 15, 'Accountant, Financial Analyst', '2025-10-25 15:40:36'),
+(144, 'Finance & Accounting', 16, 20, 'Investment Banker, Auditor', '2025-10-25 15:40:36'),
+(145, 'Government, Public Administration & Policy', 0, 5, 'Administrative Assistant, Policy Clerk', '2025-10-25 15:40:37'),
+(146, 'Government, Public Administration & Policy', 6, 10, 'Policy Officer, Civil Clerk', '2025-10-25 15:40:37'),
+(147, 'Government, Public Administration & Policy', 11, 15, 'Policy Analyst, Public Administrator', '2025-10-25 15:40:37'),
+(148, 'Government, Public Administration & Policy', 16, 20, 'Diplomat, Urban Policy Advisor', '2025-10-25 15:40:37'),
+(149, 'Health Science & Allied Professions', 0, 5, 'Nursing Assistant, Lab Assistant', '2025-10-25 15:40:37'),
+(150, 'Health Science & Allied Professions', 6, 10, 'Physiotherapist Assistant, Nutrition Aide', '2025-10-25 15:40:37'),
+(151, 'Health Science & Allied Professions', 11, 15, 'Nurse, Pharmacist', '2025-10-25 15:40:37'),
+(152, 'Health Science & Allied Professions', 16, 20, 'Doctor, Laboratory Technologist', '2025-10-25 15:40:37'),
+(153, 'Hospitality & Tourism', 0, 5, 'Kitchen Assistant, Front Desk Clerk', '2025-10-25 15:40:39'),
+(154, 'Hospitality & Tourism', 6, 10, 'Tour Guide, Event Assistant', '2025-10-25 15:40:39'),
+(155, 'Hospitality & Tourism', 11, 15, 'Event Planner, Travel Consultant', '2025-10-25 15:40:39'),
+(156, 'Hospitality & Tourism', 16, 20, 'Hotel Manager, Executive Chef', '2025-10-25 15:40:39'),
+(157, 'Human Services / Community & Social Services', 0, 5, 'Community Volunteer, Assistant Counselor', '2025-10-25 15:40:43'),
+(158, 'Human Services / Community & Social Services', 6, 10, 'Social Worker, NGO Assistant', '2025-10-25 15:40:43'),
+(159, 'Human Services / Community & Social Services', 11, 15, 'Counselor, Life Coach', '2025-10-25 15:40:43'),
+(160, 'Human Services / Community & Social Services', 16, 20, 'Psychologist, Nonprofit Manager', '2025-10-25 15:40:43'),
+(161, 'Information Technology & Computer Science', 0, 5, 'IT Support, Junior Technician', '2025-10-25 15:40:45'),
+(162, 'Information Technology & Computer Science', 6, 10, 'Network Administrator, Web Developer', '2025-10-25 15:40:45'),
+(163, 'Information Technology & Computer Science', 11, 15, 'Software Developer, Data Analyst', '2025-10-25 15:40:45'),
+(164, 'Information Technology & Computer Science', 16, 20, 'Data Scientist, Systems Engineer', '2025-10-25 15:40:45'),
+(165, 'Law, Public Safety, Corrections & Security', 0, 5, 'Security Guard, Court Clerk', '2025-10-25 15:42:13'),
+(166, 'Law, Public Safety, Corrections & Security', 6, 10, 'Police Officer, Legal Assistant', '2025-10-25 15:42:13'),
+(167, 'Law, Public Safety, Corrections & Security', 11, 15, 'Forensic Investigator, Public Safety Officer', '2025-10-25 15:42:13'),
+(168, 'Law, Public Safety, Corrections & Security', 16, 20, 'Lawyer, Judge', '2025-10-25 15:42:13'),
+(169, 'Manufacturing & Production', 0, 5, 'Assembly Line Worker, Machine Operator', '2025-10-25 15:42:14'),
+(170, 'Manufacturing & Production', 6, 10, 'Quality Control Technician, Production Assistant', '2025-10-25 15:42:14'),
+(171, 'Manufacturing & Production', 11, 15, 'Production Supervisor, Mechanical Technician', '2025-10-25 15:42:14'),
+(172, 'Manufacturing & Production', 16, 20, 'Mechanical Engineer, Plant Manager', '2025-10-25 15:42:14'),
+(173, 'Marketing, Sales & Retail', 0, 5, 'Sales Assistant, Marketing Intern', '2025-10-25 15:42:16'),
+(174, 'Marketing, Sales & Retail', 6, 10, 'Brand Associate, Retail Manager', '2025-10-25 15:42:16'),
+(175, 'Marketing, Sales & Retail', 11, 15, 'Marketing Manager, Market Research Analyst', '2025-10-25 15:42:16'),
+(176, 'Marketing, Sales & Retail', 16, 20, 'Sales Director, Brand Strategist', '2025-10-25 15:42:16'),
+(177, 'Science, Technology, Engineering & Mathematics (STEM)', 0, 5, 'Lab Assistant, Research Intern', '2025-10-25 15:42:17'),
+(178, 'Science, Technology, Engineering & Mathematics (STEM)', 6, 10, 'Technician, Junior Researcher', '2025-10-25 15:42:17'),
+(179, 'Science, Technology, Engineering & Mathematics (STEM)', 11, 15, 'Engineer, Biologist, Mathematician', '2025-10-25 15:42:17'),
+(180, 'Science, Technology, Engineering & Mathematics (STEM)', 16, 20, 'Research Scientist, Physicist, Chemist', '2025-10-25 15:42:17'),
+(181, 'Transportation, Distribution & Logistics', 0, 5, 'Driver Assistant, Warehouse Clerk', '2025-10-25 15:42:17'),
+(182, 'Transportation, Distribution & Logistics', 6, 10, 'Logistics Coordinator, Dispatcher', '2025-10-25 15:42:17'),
+(183, 'Transportation, Distribution & Logistics', 11, 15, 'Supply Chain Analyst, Transport Officer', '2025-10-25 15:42:17'),
+(184, 'Transportation, Distribution & Logistics', 16, 20, 'Transport Manager, Pilot', '2025-10-25 15:42:17'),
+(185, 'Skilled Trades & Vocational Work', 0, 5, 'Apprentice Electrician, Junior Mechanic', '2025-10-25 15:42:17'),
+(186, 'Skilled Trades & Vocational Work', 6, 10, 'Plumber, Carpenter', '2025-10-25 15:42:17'),
+(187, 'Skilled Trades & Vocational Work', 11, 15, 'Mechanic, Electrician', '2025-10-25 15:42:17'),
+(188, 'Skilled Trades & Vocational Work', 16, 20, 'Master Welder, Senior Technician', '2025-10-25 15:42:17'),
+(189, 'Creative & Performing Arts', 0, 5, 'Art Assistant, Music Student', '2025-10-25 15:42:18'),
+(190, 'Creative & Performing Arts', 6, 10, 'Visual Artist, Junior Actor', '2025-10-25 15:42:18'),
+(191, 'Creative & Performing Arts', 11, 15, 'Musician, Dancer, Scriptwriter', '2025-10-25 15:42:18'),
+(192, 'Creative & Performing Arts', 16, 20, 'Art Director, Professional Actor, Music Producer', '2025-10-25 15:42:18'),
+(193, 'Entrepreneurship & Start-ups', 0, 5, 'Business Intern, Product Assistant', '2025-10-25 15:42:18'),
+(194, 'Entrepreneurship & Start-ups', 6, 10, 'Business Consultant, Junior Founder', '2025-10-25 15:42:18'),
+(195, 'Entrepreneurship & Start-ups', 11, 15, 'Product Designer, Start-up Manager', '2025-10-25 15:42:18'),
+(196, 'Entrepreneurship & Start-ups', 16, 20, 'Business Founder, Innovation Manager', '2025-10-25 15:42:18'),
+(197, 'Research & Data Analytics', 0, 5, 'Research Assistant, Data Entry Clerk', '2025-10-25 15:42:18'),
+(198, 'Research & Data Analytics', 6, 10, 'Data Analyst, Junior Statistician', '2025-10-25 15:42:18'),
+(199, 'Research & Data Analytics', 11, 15, 'Policy Researcher, Research Scientist', '2025-10-25 15:42:18'),
+(200, 'Research & Data Analytics', 16, 20, 'Senior Data Scientist, Academic Researcher', '2025-10-25 15:42:18');
 
 -- --------------------------------------------------------
 
@@ -154,6 +313,32 @@ CREATE TABLE `career_suggestions` (
   `suggestion` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `career_traits_map`
+--
+
+CREATE TABLE `career_traits_map` (
+  `id` int(11) NOT NULL,
+  `trait` varchar(50) DEFAULT NULL,
+  `recommended_careers` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `career_traits_map`
+--
+
+INSERT INTO `career_traits_map` (`id`, `trait`, `recommended_careers`) VALUES
+(1, 'Analytical', 'Data Analyst, Software Engineer, Scientist, Financial Analyst'),
+(2, 'Creative', 'Graphic Designer, UX Designer, Architect, Writer'),
+(3, 'Social', 'Teacher, Counselor, Human Resource Manager'),
+(4, 'Organized', 'Project Manager, Administrator, Event Planner'),
+(5, 'Technical', 'Technician, Mechanic, IT Support, Engineer'),
+(6, 'Teamwork', 'Operations Manager, HR Specialist, Team Coordinator'),
+(7, 'Communication', 'Public Relations Officer, Journalist, Marketer'),
+(8, 'Emotional Control', 'Police Officer, Nurse, Psychologist');
 
 -- --------------------------------------------------------
 
@@ -267,6 +452,33 @@ INSERT INTO `sessions` (`id`, `student_id`, `counsellor_id`, `session_date`, `mo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_career_results`
+--
+
+CREATE TABLE `student_career_results` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `total_score` int(11) NOT NULL,
+  `recommendation` text DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_career_results`
+--
+
+INSERT INTO `student_career_results` (`id`, `student_id`, `category`, `total_score`, `recommendation`, `created_at`) VALUES
+(10, 10, 'Interests', 36, 'Technician, Customer Service Representative, Office Administrator', '2025-10-25 13:24:02'),
+(13, 10, 'Personality', 20, 'Security Guard, Manual Laborer, Machine Operator', '2025-10-25 13:59:00'),
+(15, 10, 'Agriculture & Natural Resources', 29, 'No career suggestions available for this score range.', '2025-10-25 14:44:27'),
+(16, 10, 'Research & Data Analytics', 19, 'Senior Data Scientist, Academic Researcher', '2025-10-25 15:56:51'),
+(37, 10, 'Finance & Accounting', 10, 'Junior Accountant, Financial Assistant', '2025-10-26 20:00:33'),
+(38, 10, 'Hospitality & Tourism', 19, 'Hotel Manager, Executive Chef', '2025-10-26 19:56:48');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_performance`
 --
 
@@ -310,26 +522,51 @@ CREATE TABLE `student_responses` (
 --
 
 INSERT INTO `student_responses` (`id`, `student_id`, `question_id`, `selected_option`, `category`, `created_at`) VALUES
-(260, 8, 71, 'C', 'Skills', '2025-10-10 13:07:21'),
-(261, 8, 72, 'D', 'Skills', '2025-10-10 13:07:21'),
-(262, 8, 73, 'C', 'Skills', '2025-10-10 13:07:21'),
-(263, 8, 74, 'C', 'Skills', '2025-10-10 13:07:21'),
-(264, 8, 75, 'B', 'Skills', '2025-10-10 13:07:21'),
-(265, 8, 66, 'C', 'Personality', '2025-10-10 13:13:04'),
-(266, 8, 67, 'C', 'Personality', '2025-10-10 13:13:04'),
-(267, 8, 68, 'B', 'Personality', '2025-10-10 13:13:04'),
-(268, 8, 69, 'C', 'Personality', '2025-10-10 13:13:05'),
-(269, 8, 70, 'B', 'Personality', '2025-10-10 13:13:05'),
-(270, 8, 76, 'C', 'Work Preference', '2025-10-14 12:47:41'),
-(271, 8, 77, 'C', 'Work Preference', '2025-10-14 12:47:41'),
-(272, 8, 78, 'D', 'Work Preference', '2025-10-14 12:47:41'),
-(273, 8, 79, 'C', 'Work Preference', '2025-10-14 12:47:41'),
-(274, 8, 80, 'C', 'Work Preference', '2025-10-14 12:47:41'),
-(275, 8, 66, 'A', 'Personality', '2025-10-15 05:08:19'),
-(276, 8, 67, 'B', 'Personality', '2025-10-15 05:08:19'),
-(277, 8, 68, 'C', 'Personality', '2025-10-15 05:08:19'),
-(278, 8, 69, 'C', 'Personality', '2025-10-15 05:08:19'),
-(279, 8, 70, 'C', 'Personality', '2025-10-15 05:08:19');
+(399, 10, 226, 'A', 'Research & Data Analytics', '2025-10-25 12:44:19'),
+(400, 10, 227, 'A', 'Research & Data Analytics', '2025-10-25 12:44:19'),
+(401, 10, 228, 'A', 'Research & Data Analytics', '2025-10-25 12:44:19'),
+(402, 10, 229, 'B', 'Research & Data Analytics', '2025-10-25 12:44:19'),
+(403, 10, 230, 'A', 'Research & Data Analytics', '2025-10-25 12:44:19'),
+(404, 10, 226, 'A', 'Research & Data Analytics', '2025-10-25 12:45:10'),
+(405, 10, 227, 'A', 'Research & Data Analytics', '2025-10-25 12:45:10'),
+(406, 10, 228, 'A', 'Research & Data Analytics', '2025-10-25 12:45:10'),
+(407, 10, 229, 'B', 'Research & Data Analytics', '2025-10-25 12:45:10'),
+(408, 10, 230, 'A', 'Research & Data Analytics', '2025-10-25 12:45:10'),
+(409, 10, 226, 'A', 'Research & Data Analytics', '2025-10-25 12:46:37'),
+(410, 10, 227, 'A', 'Research & Data Analytics', '2025-10-25 12:46:37'),
+(411, 10, 228, 'A', 'Research & Data Analytics', '2025-10-25 12:46:37'),
+(412, 10, 229, 'B', 'Research & Data Analytics', '2025-10-25 12:46:37'),
+(413, 10, 230, 'A', 'Research & Data Analytics', '2025-10-25 12:46:37'),
+(414, 10, 226, 'A', 'Research & Data Analytics', '2025-10-25 12:56:51'),
+(415, 10, 227, 'A', 'Research & Data Analytics', '2025-10-25 12:56:51'),
+(416, 10, 228, 'A', 'Research & Data Analytics', '2025-10-25 12:56:51'),
+(417, 10, 229, 'B', 'Research & Data Analytics', '2025-10-25 12:56:51'),
+(418, 10, 230, 'A', 'Research & Data Analytics', '2025-10-25 12:56:51'),
+(419, 10, 156, 'A', 'Finance & Accounting', '2025-10-25 12:57:16'),
+(420, 10, 157, 'A', 'Finance & Accounting', '2025-10-25 12:57:16'),
+(421, 10, 158, 'A', 'Finance & Accounting', '2025-10-25 12:57:16'),
+(422, 10, 159, 'A', 'Finance & Accounting', '2025-10-25 12:57:16'),
+(423, 10, 160, 'A', 'Finance & Accounting', '2025-10-25 12:57:16'),
+(424, 10, 171, 'A', 'Hospitality & Tourism', '2025-10-26 16:56:47'),
+(425, 10, 172, 'B', 'Hospitality & Tourism', '2025-10-26 16:56:47'),
+(426, 10, 173, 'A', 'Hospitality & Tourism', '2025-10-26 16:56:47'),
+(427, 10, 174, 'A', 'Hospitality & Tourism', '2025-10-26 16:56:47'),
+(428, 10, 175, 'A', 'Hospitality & Tourism', '2025-10-26 16:56:47'),
+(429, 10, 156, 'A', 'Finance & Accounting', '2025-10-26 16:58:04'),
+(430, 10, 157, 'A', 'Finance & Accounting', '2025-10-26 16:58:04'),
+(431, 10, 158, 'A', 'Finance & Accounting', '2025-10-26 16:58:04'),
+(432, 10, 159, 'A', 'Finance & Accounting', '2025-10-26 16:58:04'),
+(433, 10, 160, 'A', 'Finance & Accounting', '2025-10-26 16:58:04'),
+(434, 10, 156, 'D', 'Finance & Accounting', '2025-10-26 16:58:54'),
+(435, 10, 157, 'D', 'Finance & Accounting', '2025-10-26 16:58:54'),
+(436, 10, 158, 'D', 'Finance & Accounting', '2025-10-26 16:58:54'),
+(437, 10, 159, 'D', 'Finance & Accounting', '2025-10-26 16:58:54'),
+(438, 10, 160, 'D', 'Finance & Accounting', '2025-10-26 16:58:54'),
+(439, 10, 156, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
+(440, 10, 157, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
+(441, 10, 158, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
+(442, 10, 159, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
+(443, 10, 160, 'C', 'Finance & Accounting', '2025-10-26 17:00:33');
 
 -- --------------------------------------------------------
 
@@ -386,7 +623,7 @@ ALTER TABLE `career_assessments`
 --
 ALTER TABLE `career_category_scores`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `student_category` (`student_id`,`category`);
+  ADD UNIQUE KEY `unique_student_category` (`student_id`,`category`);
 
 --
 -- Indexes for table `career_questions`
@@ -395,9 +632,21 @@ ALTER TABLE `career_questions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `career_recommendations`
+--
+ALTER TABLE `career_recommendations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `career_suggestions`
 --
 ALTER TABLE `career_suggestions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `career_traits_map`
+--
+ALTER TABLE `career_traits_map`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -427,6 +676,13 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_sessions_student` (`student_id`),
   ADD KEY `fk_sessions_counsellor` (`counsellor_id`);
+
+--
+-- Indexes for table `student_career_results`
+--
+ALTER TABLE `student_career_results`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `student_id` (`student_id`,`category`);
 
 --
 -- Indexes for table `student_performance`
@@ -472,19 +728,31 @@ ALTER TABLE `career_assessments`
 -- AUTO_INCREMENT for table `career_category_scores`
 --
 ALTER TABLE `career_category_scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `career_questions`
 --
 ALTER TABLE `career_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
+
+--
+-- AUTO_INCREMENT for table `career_recommendations`
+--
+ALTER TABLE `career_recommendations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT for table `career_suggestions`
 --
 ALTER TABLE `career_suggestions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `career_traits_map`
+--
+ALTER TABLE `career_traits_map`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `counselor_reports`
@@ -511,6 +779,12 @@ ALTER TABLE `sessions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `student_career_results`
+--
+ALTER TABLE `student_career_results`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
 -- AUTO_INCREMENT for table `student_performance`
 --
 ALTER TABLE `student_performance`
@@ -520,7 +794,7 @@ ALTER TABLE `student_performance`
 -- AUTO_INCREMENT for table `student_responses`
 --
 ALTER TABLE `student_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=444;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -543,12 +817,6 @@ ALTER TABLE `activity_logs`
 --
 ALTER TABLE `career_assessments`
   ADD CONSTRAINT `fk_career_assessments_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `career_category_scores`
---
-ALTER TABLE `career_category_scores`
-  ADD CONSTRAINT `fk_student` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `notifications`
