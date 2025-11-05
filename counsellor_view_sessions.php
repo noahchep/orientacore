@@ -32,9 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['session_id'], $_POST[
         $stmt->execute([$action, $session_id, $counsellor_id]);
 
         if ($stmt->rowCount() > 0) {
+
             // Fetch student info for notification
             $stmt2 = $pdo->prepare("
-                SELECT s.student_id, u.name AS student_name
+                SELECT s.student_id, u.name AS student_name, u.email AS student_email, s.session_date
                 FROM sessions s
                 JOIN users u ON s.student_id = u.id
                 WHERE s.id = ?
@@ -44,9 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['session_id'], $_POST[
 
             if ($sess) {
                 $student_id = $sess['student_id'];
-                $student_msg = "Your counselling session request has been " . ucfirst($action) . " by the counsellor.";
 
                 // Insert notification for student
+                $student_msg = "Your counselling session request has been " . ucfirst($action) . " by the counsellor.";
                 $ins = $pdo->prepare("INSERT INTO notifications (user_id, user_type, message) VALUES (?, 'student', ?)");
                 $ins->execute([$student_id, $student_msg]);
 
@@ -58,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['session_id'], $_POST[
                     $insAdmin->execute([$admin['id'], $admin_msg]);
                 }
             }
+
             $_SESSION['msg'] = "Session {$action} successfully.";
         } else {
             $_SESSION['msg'] = "No session updated. Check that this session exists and is assigned to you.";
@@ -146,18 +148,17 @@ unset($_SESSION['msg']);
                         <td class="<?= $status_class ?>"><?= ucfirst($status) ?></td>
                         <td>
                             <?php if ($status === 'pending'): ?>
-                                <form method="post" style="display:inline;">
-                                    <input type="hidden" name="session_id" value="<?= intval($session['id']) ?>">
-                                    <input type="hidden" name="action" value="approved">
-                                    <button type="submit" class="action-btn approve-btn">Approve</button>
-                                </form>
+                                <a href="approve_session.php?id=<?= intval($session['id']) ?>" class="action-btn approve-btn">Approve</a>
+
                                 <form method="post" style="display:inline;">
                                     <input type="hidden" name="session_id" value="<?= intval($session['id']) ?>">
                                     <input type="hidden" name="action" value="declined">
                                     <button type="submit" class="action-btn decline-btn">Decline</button>
                                 </form>
+
                             <?php elseif ($status === 'approved'): ?>
                                 <a href="reports.php?student_id=<?= intval($session['student_id']) ?>&session_id=<?= intval($session['id']) ?>" class="action-btn report-btn">Add Report</a>
+
                             <?php else: ?>
                                 <em>No further action</em>
                             <?php endif; ?>
