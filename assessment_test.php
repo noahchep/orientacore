@@ -91,11 +91,21 @@ select {
   border-radius: 8px;
   border: 1px solid #ccc;
 }
+a.behavior-link {
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: none;
+}
+a.behavior-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 <div class="container">
-    <h1>Career Assessment</h1>
+    
+    <!-- Link to Behavior Assessment -->
+    <p>
+        Take career assesment and then take <a href="behavior.php" class="behavior-link">Behavior Assessment</a>
+    </p>
 
     <?php if (!$selectedCategory): ?>
         <!-- Show category selection -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2025 at 07:40 PM
+-- Generation Time: Nov 10, 2025 at 02:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -33,6 +33,180 @@ CREATE TABLE `activity_logs` (
   `action` varchar(255) NOT NULL,
   `logged_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `behavior_questions`
+--
+
+CREATE TABLE `behavior_questions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `question_text` text NOT NULL,
+  `option_a` varchar(255) NOT NULL,
+  `option_b` varchar(255) NOT NULL,
+  `option_c` varchar(255) NOT NULL,
+  `option_d` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `behavior_questions`
+--
+
+INSERT INTO `behavior_questions` (`id`, `question_text`, `option_a`, `option_b`, `option_c`, `option_d`, `category`, `created_at`) VALUES
+(1, 'I take initiative in group activities.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Leadership & Responsibility', '2025-11-10 12:44:27'),
+(2, 'I can make decisions under pressure.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Leadership & Responsibility', '2025-11-10 12:44:27'),
+(3, 'I am comfortable leading a team.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Leadership & Responsibility', '2025-11-10 12:44:27'),
+(4, 'I hold myself accountable for my actions.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Leadership & Responsibility', '2025-11-10 12:44:27'),
+(5, 'I take responsibility for achieving group goals.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Leadership & Responsibility', '2025-11-10 12:44:27'),
+(6, 'I come up with new ideas frequently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Creativity & Innovation', '2025-11-10 12:44:46'),
+(7, 'I enjoy finding unique solutions to problems.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Creativity & Innovation', '2025-11-10 12:44:46'),
+(8, 'I am comfortable thinking outside the box.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Creativity & Innovation', '2025-11-10 12:44:46'),
+(9, 'I experiment with new approaches in my work.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Creativity & Innovation', '2025-11-10 12:44:46'),
+(10, 'I adapt creative ideas into practical solutions.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Creativity & Innovation', '2025-11-10 12:44:46'),
+(11, 'I work well in team settings.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Teamwork & Collaboration', '2025-11-10 12:45:07'),
+(12, 'I support my teammates to achieve goals.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Teamwork & Collaboration', '2025-11-10 12:45:07'),
+(13, 'I communicate effectively with team members.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Teamwork & Collaboration', '2025-11-10 12:45:07'),
+(14, 'I handle conflicts in teams constructively.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Teamwork & Collaboration', '2025-11-10 12:45:07'),
+(15, 'I value diverse perspectives in a team.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Teamwork & Collaboration', '2025-11-10 12:45:07'),
+(16, 'I express my ideas clearly.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Communication Skills', '2025-11-10 12:45:30'),
+(17, 'I listen carefully to others.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Communication Skills', '2025-11-10 12:45:30'),
+(18, 'I adapt my communication to different audiences.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Communication Skills', '2025-11-10 12:45:30'),
+(19, 'I provide constructive feedback.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Communication Skills', '2025-11-10 12:45:30'),
+(20, 'I can persuade or influence others effectively.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Communication Skills', '2025-11-10 12:45:30'),
+(21, 'I analyze problems before taking action.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Problem Solving & Critical Thinking', '2025-11-10 12:45:58'),
+(22, 'I consider multiple solutions to problems.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Problem Solving & Critical Thinking', '2025-11-10 12:45:58'),
+(23, 'I make logical decisions under uncertainty.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Problem Solving & Critical Thinking', '2025-11-10 12:45:58'),
+(24, 'I learn from mistakes to improve outcomes.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Problem Solving & Critical Thinking', '2025-11-10 12:45:58'),
+(25, 'I apply critical thinking in daily tasks.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Problem Solving & Critical Thinking', '2025-11-10 12:45:58'),
+(26, 'I adjust easily to changes.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Adaptability & Flexibility', '2025-11-10 12:46:18'),
+(27, 'I remain calm under unexpected situations.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Adaptability & Flexibility', '2025-11-10 12:46:18'),
+(28, 'I can switch between tasks efficiently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Adaptability & Flexibility', '2025-11-10 12:46:18'),
+(29, 'I accept constructive criticism.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Adaptability & Flexibility', '2025-11-10 12:46:18'),
+(30, 'I thrive in dynamic environments.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Adaptability & Flexibility', '2025-11-10 12:46:18'),
+(31, 'I complete tasks on time.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Ethic & Motivation', '2025-11-10 12:46:40'),
+(32, 'I stay focused on long-term goals.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Ethic & Motivation', '2025-11-10 12:46:40'),
+(33, 'I take pride in my work quality.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Ethic & Motivation', '2025-11-10 12:46:40'),
+(34, 'I persevere even when tasks are challenging.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Ethic & Motivation', '2025-11-10 12:46:40'),
+(35, 'I am self-motivated without supervision.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Work Ethic & Motivation', '2025-11-10 12:46:40'),
+(36, 'I understand the emotions of others.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Emotional Intelligence & Empathy', '2025-11-10 12:46:59'),
+(37, 'I manage my own emotions effectively.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Emotional Intelligence & Empathy', '2025-11-10 12:46:59'),
+(38, 'I respond appropriately to others’ feelings.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Emotional Intelligence & Empathy', '2025-11-10 12:46:59'),
+(39, 'I remain patient and calm in difficult situations.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Emotional Intelligence & Empathy', '2025-11-10 12:46:59'),
+(40, 'I build positive relationships easily.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Emotional Intelligence & Empathy', '2025-11-10 12:46:59'),
+(41, 'I plan my day effectively.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Organization & Time Management', '2025-11-10 12:47:21'),
+(42, 'I prioritize tasks based on importance.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Organization & Time Management', '2025-11-10 12:47:21'),
+(43, 'I meet deadlines consistently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Organization & Time Management', '2025-11-10 12:47:21'),
+(44, 'I keep my workspace organized.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Organization & Time Management', '2025-11-10 12:47:21'),
+(45, 'I avoid procrastination.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Organization & Time Management', '2025-11-10 12:47:21'),
+(46, 'I am confident in my abilities.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Self-Confidence & Initiative', '2025-11-10 12:48:15'),
+(47, 'I take action without being told.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Self-Confidence & Initiative', '2025-11-10 12:48:15'),
+(48, 'I am comfortable making independent decisions.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Self-Confidence & Initiative', '2025-11-10 12:48:15'),
+(49, 'I express my opinions confidently.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Self-Confidence & Initiative', '2025-11-10 12:48:15'),
+(50, 'I embrace challenges as opportunities.', 'Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree', 'Self-Confidence & Initiative', '2025-11-10 12:48:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `behavior_responses`
+--
+
+CREATE TABLE `behavior_responses` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `question_id` int(10) UNSIGNED NOT NULL,
+  `score` tinyint(4) NOT NULL COMMENT '1-5 rating',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `behavior_responses`
+--
+
+INSERT INTO `behavior_responses` (`id`, `user_id`, `question_id`, `score`, `created_at`) VALUES
+(71, 10, 1, 1, '2025-11-10 13:46:25'),
+(72, 10, 2, 5, '2025-11-10 13:46:25'),
+(73, 10, 3, 2, '2025-11-10 13:46:25'),
+(74, 10, 4, 2, '2025-11-10 13:46:25'),
+(75, 10, 5, 5, '2025-11-10 13:46:25'),
+(76, 10, 1, 1, '2025-11-10 13:46:58'),
+(77, 10, 2, 5, '2025-11-10 13:46:58'),
+(78, 10, 3, 2, '2025-11-10 13:46:58'),
+(79, 10, 4, 5, '2025-11-10 13:46:58'),
+(80, 10, 5, 5, '2025-11-10 13:46:58'),
+(81, 10, 36, 5, '2025-11-10 13:48:15'),
+(82, 10, 37, 5, '2025-11-10 13:48:16'),
+(83, 10, 38, 5, '2025-11-10 13:48:16'),
+(84, 10, 39, 5, '2025-11-10 13:48:16'),
+(85, 10, 40, 5, '2025-11-10 13:48:16'),
+(86, 10, 36, 1, '2025-11-10 13:48:47'),
+(87, 10, 37, 1, '2025-11-10 13:48:47'),
+(88, 10, 38, 1, '2025-11-10 13:48:47'),
+(89, 10, 39, 1, '2025-11-10 13:48:47'),
+(90, 10, 40, 1, '2025-11-10 13:48:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `behavior_suggestions`
+--
+
+CREATE TABLE `behavior_suggestions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `min_score` int(11) NOT NULL,
+  `max_score` int(11) NOT NULL,
+  `recommended_careers` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `behavior_suggestions`
+--
+
+INSERT INTO `behavior_suggestions` (`id`, `category`, `min_score`, `max_score`, `recommended_careers`, `created_at`) VALUES
+(1, 'Leadership & Responsibility', 0, 5, 'Participate in small leadership tasks; seek guidance.', '2025-11-10 13:26:31'),
+(2, 'Leadership & Responsibility', 6, 10, 'Take initiative in group activities; build confidence.', '2025-11-10 13:26:31'),
+(3, 'Leadership & Responsibility', 11, 15, 'Lead team projects and mentor peers.', '2025-11-10 13:26:31'),
+(4, 'Leadership & Responsibility', 16, 20, 'Assume major leadership roles and inspire others.', '2025-11-10 13:26:31'),
+(5, 'Creativity & Innovation', 0, 5, 'Engage in basic creative exercises; practice brainstorming.', '2025-11-10 13:26:31'),
+(6, 'Creativity & Innovation', 6, 10, 'Participate in creative projects; explore new ideas.', '2025-11-10 13:26:31'),
+(7, 'Creativity & Innovation', 11, 15, 'Lead innovative projects; collaborate on creative solutions.', '2025-11-10 13:26:31'),
+(8, 'Creativity & Innovation', 16, 20, 'Pursue advanced creative roles; consider entrepreneurship.', '2025-11-10 13:26:31'),
+(9, 'Teamwork & Collaboration', 0, 5, 'Practice working in small groups; improve communication.', '2025-11-10 13:26:31'),
+(10, 'Teamwork & Collaboration', 6, 10, 'Participate actively in team projects; listen to others.', '2025-11-10 13:26:31'),
+(11, 'Teamwork & Collaboration', 11, 15, 'Facilitate teamwork; resolve conflicts effectively.', '2025-11-10 13:26:31'),
+(12, 'Teamwork & Collaboration', 16, 20, 'Lead collaborative initiatives and mentor teams.', '2025-11-10 13:26:31'),
+(13, 'Communication Skills', 0, 5, 'Practice basic speaking and writing skills.', '2025-11-10 13:26:31'),
+(14, 'Communication Skills', 6, 10, 'Engage in presentations; improve clarity and tone.', '2025-11-10 13:26:31'),
+(15, 'Communication Skills', 11, 15, 'Communicate effectively in complex settings.', '2025-11-10 13:26:31'),
+(16, 'Communication Skills', 16, 20, 'Lead discussions; mentor others on communication skills.', '2025-11-10 13:26:31'),
+(17, 'Problem Solving & Critical Thinking', 0, 5, 'Solve simple problems; learn to analyze situations.', '2025-11-10 13:26:31'),
+(18, 'Problem Solving & Critical Thinking', 6, 10, 'Work on structured problem-solving exercises.', '2025-11-10 13:26:31'),
+(19, 'Problem Solving & Critical Thinking', 11, 15, 'Take initiative in solving complex problems.', '2025-11-10 13:26:31'),
+(20, 'Problem Solving & Critical Thinking', 16, 20, 'Lead problem-solving projects; innovate solutions.', '2025-11-10 13:26:31'),
+(21, 'Adaptability & Flexibility', 0, 5, 'Practice adjusting to small changes; be open to feedback.', '2025-11-10 13:26:31'),
+(22, 'Adaptability & Flexibility', 6, 10, 'Handle moderate changes effectively; stay flexible.', '2025-11-10 13:26:31'),
+(23, 'Adaptability & Flexibility', 11, 15, 'Adapt quickly to new situations; mentor peers.', '2025-11-10 13:26:31'),
+(24, 'Adaptability & Flexibility', 16, 20, 'Excel in dynamic environments; lead change initiatives.', '2025-11-10 13:26:31'),
+(25, 'Work Ethic & Motivation', 0, 5, 'Focus on completing tasks; develop consistency.', '2025-11-10 13:26:31'),
+(26, 'Work Ethic & Motivation', 6, 10, 'Set goals; work diligently with minimal supervision.', '2025-11-10 13:26:31'),
+(27, 'Work Ethic & Motivation', 11, 15, 'Take ownership of projects; inspire peers.', '2025-11-10 13:26:31'),
+(28, 'Work Ethic & Motivation', 16, 20, 'Exhibit exceptional work ethic; lead by example.', '2025-11-10 13:26:31'),
+(29, 'Emotional Intelligence & Empathy', 0, 5, 'Practice recognizing emotions; understand others’ perspectives.', '2025-11-10 13:26:31'),
+(30, 'Emotional Intelligence & Empathy', 6, 10, 'Improve interpersonal skills; provide support.', '2025-11-10 13:26:31'),
+(31, 'Emotional Intelligence & Empathy', 11, 15, 'Demonstrate empathy in complex scenarios; mentor others.', '2025-11-10 13:26:31'),
+(32, 'Emotional Intelligence & Empathy', 16, 20, 'Lead emotionally intelligent teams; resolve conflicts.', '2025-11-10 13:26:31'),
+(33, 'Organization & Time Management', 0, 5, 'Practice basic organization; plan small tasks.', '2025-11-10 13:26:31'),
+(34, 'Organization & Time Management', 6, 10, 'Manage multiple tasks; prioritize effectively.', '2025-11-10 13:26:31'),
+(35, 'Organization & Time Management', 11, 15, 'Coordinate projects efficiently; mentor peers.', '2025-11-10 13:26:31'),
+(36, 'Organization & Time Management', 16, 20, 'Lead complex projects; optimize team productivity.', '2025-11-10 13:26:31'),
+(37, 'Self-Confidence & Initiative', 0, 5, 'Participate in small tasks; take minor initiatives.', '2025-11-10 13:26:31'),
+(38, 'Self-Confidence & Initiative', 6, 10, 'Take on visible roles; practice decision-making.', '2025-11-10 13:26:31'),
+(39, 'Self-Confidence & Initiative', 11, 15, 'Lead initiatives confidently; encourage others.', '2025-11-10 13:26:31'),
+(40, 'Self-Confidence & Initiative', 16, 20, 'Excel in leadership and independent projects; mentor others.', '2025-11-10 13:26:31');
 
 -- --------------------------------------------------------
 
@@ -72,10 +246,11 @@ CREATE TABLE `career_category_scores` (
 INSERT INTO `career_category_scores` (`id`, `student_id`, `category`, `score`, `created_at`) VALUES
 (1, 10, 'Personality', 20.00, '2025-10-25 13:58:59'),
 (6, 10, 'Interests', 36.00, '2025-10-25 13:21:46'),
-(8, 10, 'Agriculture & Natural Resources', 29.00, '2025-10-25 14:44:27'),
+(8, 10, 'Agriculture & Natural Resources', 13.00, '2025-11-10 16:29:35'),
 (9, 10, 'Research & Data Analytics', 19.00, '2025-10-25 15:56:51'),
 (18, 10, 'Finance & Accounting', 10.00, '2025-10-26 20:00:33'),
-(19, 10, 'Hospitality & Tourism', 19.00, '2025-10-26 19:56:47');
+(19, 10, 'Hospitality & Tourism', 19.00, '2025-10-26 19:56:47'),
+(23, 10, 'Architecture & Construction', 14.00, '2025-11-10 16:01:51');
 
 -- --------------------------------------------------------
 
@@ -388,7 +563,6 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `user_id`, `user_type`, `message`, `is_read`, `created_at`) VALUES
-(1, 8, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-14 19:23:34'),
 (2, 7, 'admin', 'A counselling session for student (ID 8) has been approved.', 0, '2025-10-14 19:23:34'),
 (3, 10, 'student', 'Your counselling session request has been Declined by the counsellor.', 0, '2025-10-14 19:26:50'),
 (4, 7, 'admin', 'A counselling session for student (ID 10) has been declined.', 0, '2025-10-14 19:26:50'),
@@ -396,14 +570,41 @@ INSERT INTO `notifications` (`id`, `user_id`, `user_type`, `message`, `is_read`,
 (6, 7, 'admin', 'New counselling session requested by student (session ID: 3).', 0, '2025-10-14 20:18:03'),
 (7, 9, '', 'New counselling session requested by student for Oct 10, 2025 12:00 PM.', 0, '2025-10-15 05:31:18'),
 (8, 7, 'admin', 'New counselling session requested by student (session ID: 4).', 0, '2025-10-15 05:31:18'),
-(9, 8, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-24 20:43:44'),
 (10, 7, 'admin', 'A counselling session for student (ID 8) has been approved.', 0, '2025-10-24 20:43:44'),
-(11, 8, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-24 20:43:46'),
 (12, 7, 'admin', 'A counselling session for student (ID 8) has been approved.', 0, '2025-10-24 20:43:46'),
 (13, 9, '', 'New counselling session requested by peter for Dec 12, 2025 10:00 AM.', 0, '2025-10-24 21:08:58'),
 (14, 7, 'admin', 'New counselling session requested by peter (session ID: 5).', 0, '2025-10-24 21:08:58'),
 (15, 10, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-10-24 21:09:24'),
-(16, 7, 'admin', 'A counselling session for student (ID 10) has been approved.', 0, '2025-10-24 21:09:24');
+(16, 7, 'admin', 'A counselling session for student (ID 10) has been approved.', 0, '2025-10-24 21:09:24'),
+(17, 16, '', 'New counselling session requested by peter for Jun 12, 2025 12:00 PM.', 0, '2025-10-31 13:02:55'),
+(18, 7, 'admin', 'New counselling session requested by peter (session ID: 6).', 0, '2025-10-31 13:02:56'),
+(19, 9, '', 'New counselling session requested by peter for Dec 12, 2025 12:00 PM.', 0, '2025-10-31 13:04:45'),
+(20, 7, 'admin', 'New counselling session requested by peter (session ID: 7).', 0, '2025-10-31 13:04:45'),
+(21, 10, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-11-02 18:52:08'),
+(22, 7, 'admin', 'A counselling session for student (ID 10) has been approved.', 0, '2025-11-02 18:52:09'),
+(23, 9, '', 'New counselling session requested by Vera MIchael for Nov 07, 2025 12:00 PM.', 0, '2025-11-02 19:22:38'),
+(24, 7, 'admin', 'New counselling session requested by Vera MIchael (session ID: 8).', 0, '2025-11-02 19:22:38'),
+(26, 7, 'admin', 'A counselling session for student (ID 14) has been approved.', 0, '2025-11-02 19:23:02'),
+(27, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 07, 2025 12:00 PM.', 0, '2025-11-02 19:44:44'),
+(28, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 9).', 0, '2025-11-02 19:44:44'),
+(29, 18, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-11-02 19:45:10'),
+(30, 7, 'admin', 'A counselling session for student (ID 18) has been approved.', 0, '2025-11-02 19:45:10'),
+(31, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 12, 2025 12:00 PM.', 0, '2025-11-02 20:00:41'),
+(32, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 10).', 0, '2025-11-02 20:00:41'),
+(33, 18, 'student', 'Your counselling session request has been Approved by the counsellor.', 0, '2025-11-02 20:01:07'),
+(34, 7, 'admin', 'A counselling session for student (ID 18) has been approved.', 0, '2025-11-02 20:01:07'),
+(35, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 12, 2025 12:00 PM.', 0, '2025-11-02 20:07:18'),
+(36, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 11).', 0, '2025-11-02 20:07:18'),
+(37, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 12, 2025 12:00 PM.', 0, '2025-11-02 20:15:12'),
+(38, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 12).', 0, '2025-11-02 20:15:12'),
+(39, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 12, 2025 11:00 AM.', 0, '2025-11-02 20:22:44'),
+(40, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 13).', 0, '2025-11-02 20:22:44'),
+(41, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 12, 2025 12:00 PM.', 0, '2025-11-03 11:05:22'),
+(42, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 14).', 0, '2025-11-03 11:05:22'),
+(43, 9, '', 'New counselling session requested by Noah Chepkonga for Nov 12, 2025 12:00 PM.', 0, '2025-11-03 11:05:22'),
+(44, 7, 'admin', 'New counselling session requested by Noah Chepkonga (session ID: 15).', 0, '2025-11-03 11:05:22'),
+(45, 9, '', 'New counselling session requested by VERA MICHAEL for Nov 07, 2025 03:00 PM.', 0, '2025-11-03 11:18:45'),
+(46, 7, 'admin', 'New counselling session requested by VERA MICHAEL (session ID: 16).', 0, '2025-11-03 11:18:46');
 
 -- --------------------------------------------------------
 
@@ -435,19 +636,25 @@ CREATE TABLE `sessions` (
   `action_plan` text DEFAULT NULL,
   `status` varchar(50) DEFAULT 'Pending',
   `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `session_mode` varchar(50) DEFAULT NULL,
+  `venue` varchar(255) DEFAULT NULL,
+  `meeting_link` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(50) DEFAULT NULL,
+  `whatsapp_link` varchar(255) DEFAULT NULL,
+  `additional_info` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sessions`
 --
 
-INSERT INTO `sessions` (`id`, `student_id`, `counsellor_id`, `session_date`, `mode`, `notes`, `action_plan`, `status`, `created_at`, `updated_at`) VALUES
-(1, 8, 9, '2025-10-03 00:00:00', 'Physical', 'counselling about peer pressure', 'monitoring', 'approved', '2025-09-22 17:13:38', '2025-10-14 22:23:34'),
-(2, 10, 9, '2025-10-18 14:00:00', 'In-Person', 'ggh', 'fggf', 'declined', '2025-10-14 22:25:51', '2025-10-14 22:26:49'),
-(3, 8, 9, '2025-10-18 13:00:00', 'Physical', 'personal', 'nothing much', 'approved', '2025-10-14 23:18:03', '2025-10-24 23:43:45'),
-(4, 8, 9, '2025-10-10 12:00:00', 'Physical', 'fgfga', 'dgagef', 'approved', '2025-10-15 08:31:18', '2025-10-24 23:43:44'),
-(5, 10, 9, '2025-12-12 10:00:00', 'Physical', 'career', 'make right career choice', 'approved', '2025-10-25 00:08:57', '2025-10-25 00:09:23');
+INSERT INTO `sessions` (`id`, `student_id`, `counsellor_id`, `session_date`, `mode`, `notes`, `action_plan`, `status`, `created_at`, `updated_at`, `session_mode`, `venue`, `meeting_link`, `phone_number`, `whatsapp_link`, `additional_info`) VALUES
+(12, 18, 9, '2025-11-12 12:00:00', 'Online', 'aas', 'aasasasa', 'approved', '2025-11-02 23:15:11', '2025-11-02 23:15:54', 'Online', '', 'https://us05web.zoom.us/j/84117395070?pwd=vQgfBpb7p7JvCpbfobQm2cTqTXO8ro.1', '', '', ''),
+(13, 18, 9, '2025-11-12 11:00:00', 'Online', 'zxzxz', 'sdfgdc', 'approved', '2025-11-02 23:22:43', '2025-11-02 23:23:24', 'Online', '', 'https://us05web.zoom.us/j/84117395070?pwd=vQgfBpb7p7JvCpbfobQm2cTqTXO8ro.1', '', '', 'bvjh'),
+(14, 18, 9, '2025-11-12 12:00:00', 'Online', 'career decision', 'To make the right career choice', 'approved', '2025-11-03 14:05:22', '2025-11-03 14:06:56', 'Online', '', 'https://us05web.zoom.us/j/84117395070?pwd=vQgfBpb7p7JvCpbfobQm2cTqTXO8ro.1', '', '', ''),
+(15, 18, 9, '2025-11-12 12:00:00', 'Online', 'career decision', 'To make the right career choice', 'pending', '2025-11-03 14:05:22', '2025-11-03 14:05:22', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 19, 9, '2025-11-07 15:00:00', 'Online', 'Performance issue', 'To improve my Grades', 'approved', '2025-11-03 14:18:45', '2025-11-03 14:21:35', 'WhatsApp', '', '', '', 'https://wa.me/+254759768770', '');
 
 -- --------------------------------------------------------
 
@@ -471,10 +678,11 @@ CREATE TABLE `student_career_results` (
 INSERT INTO `student_career_results` (`id`, `student_id`, `category`, `total_score`, `recommendation`, `created_at`) VALUES
 (10, 10, 'Interests', 36, 'Technician, Customer Service Representative, Office Administrator', '2025-10-25 13:24:02'),
 (13, 10, 'Personality', 20, 'Security Guard, Manual Laborer, Machine Operator', '2025-10-25 13:59:00'),
-(15, 10, 'Agriculture & Natural Resources', 29, 'No career suggestions available for this score range.', '2025-10-25 14:44:27'),
+(15, 10, 'Agriculture & Natural Resources', 13, 'Environmental Scientist, Farm Manager', '2025-11-10 16:29:35'),
 (16, 10, 'Research & Data Analytics', 19, 'Senior Data Scientist, Academic Researcher', '2025-10-25 15:56:51'),
 (37, 10, 'Finance & Accounting', 10, 'Junior Accountant, Financial Assistant', '2025-10-26 20:00:33'),
-(38, 10, 'Hospitality & Tourism', 19, 'Hotel Manager, Executive Chef', '2025-10-26 19:56:48');
+(38, 10, 'Hospitality & Tourism', 19, 'Hotel Manager, Executive Chef', '2025-10-26 19:56:48'),
+(42, 10, 'Architecture & Construction', 14, 'Construction Manager, Urban Planner', '2025-11-10 16:01:51');
 
 -- --------------------------------------------------------
 
@@ -497,10 +705,7 @@ CREATE TABLE `student_performance` (
 --
 
 INSERT INTO `student_performance` (`id`, `student_id`, `course_name`, `semester`, `gpa`, `status`, `created_at`) VALUES
-(1, 8, 'Information Technology', 'Jan-April', 60.00, 'Second Upper', '2025-09-22 12:19:37'),
-(5, 8, 'Information Technology', 'May-August', 70.00, 'First Class', '2025-09-22 14:39:07'),
-(11, 10, 'IT', 'Jan-April', 67.00, 'Second Upper', '2025-09-22 16:46:45'),
-(12, 14, 'Information Technology', 'May-August', 60.00, 'Second Upper', '2025-09-30 15:12:02');
+(11, 10, 'IT', 'Jan-April', 67.00, 'Second Upper', '2025-09-22 16:46:45');
 
 -- --------------------------------------------------------
 
@@ -566,7 +771,17 @@ INSERT INTO `student_responses` (`id`, `student_id`, `question_id`, `selected_op
 (440, 10, 157, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
 (441, 10, 158, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
 (442, 10, 159, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
-(443, 10, 160, 'C', 'Finance & Accounting', '2025-10-26 17:00:33');
+(443, 10, 160, 'C', 'Finance & Accounting', '2025-10-26 17:00:33'),
+(444, 10, 136, 'A', 'Architecture & Construction', '2025-11-10 13:01:51'),
+(445, 10, 137, 'B', 'Architecture & Construction', '2025-11-10 13:01:51'),
+(446, 10, 138, 'C', 'Architecture & Construction', '2025-11-10 13:01:51'),
+(447, 10, 139, 'C', 'Architecture & Construction', '2025-11-10 13:01:51'),
+(448, 10, 140, 'B', 'Architecture & Construction', '2025-11-10 13:01:51'),
+(449, 10, 131, 'B', 'Agriculture & Natural Resources', '2025-11-10 13:29:35'),
+(450, 10, 132, 'B', 'Agriculture & Natural Resources', '2025-11-10 13:29:35'),
+(451, 10, 133, 'B', 'Agriculture & Natural Resources', '2025-11-10 13:29:35'),
+(452, 10, 134, 'C', 'Agriculture & Natural Resources', '2025-11-10 13:29:35'),
+(453, 10, 135, 'C', 'Agriculture & Natural Resources', '2025-11-10 13:29:35');
 
 -- --------------------------------------------------------
 
@@ -592,13 +807,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `reg_no`, `name`, `email`, `profile_pic`, `password_hash`, `role`, `status`, `created_at`) VALUES
 (7, 'ADM001', 'Super Admin', 'admin@example.com', NULL, '$2y$10$uScyNVYPXo/RyPFFyw7WyudpgdecJkeEVj6AArQ4LvBcNcOGRz32y', 'admin', 'active', '2025-09-22 11:17:23'),
-(8, 'BIT/2024/43255', 'student', 'student@gmail.com', 'uploads/68eeacfbe441a.jpg', '$2y$10$kddZFXBKZU6yc6m0TsRvmet6EJSthNCwVXhaI4vtWqlEV7p.GneCi', 'student', 'active', '2025-09-22 11:26:50'),
 (9, 'coun123', 'counsellor', 'counsellor@gmail.com', NULL, '$2y$10$7qXulWihk69F/oBSCs9CweF54DWQ49fUQRk8ZUUEy1zwFAGnY8WwK', 'counsellor', 'active', '2025-09-22 11:44:27'),
 (10, 'std001', 'peter', 'peter@gmail.com', 'uploads/68dfe82b3783b.jpg', '$2y$10$SsNPkIi4h8Wi.1sLX6wlaepRJpJIFWWuTTYfSNghqADt9VrXpBfLS', 'student', 'active', '2025-09-22 15:54:06'),
 (11, 'CL001', 'Dr. Isaac', 'Isaac@orientacore.ac.ke', NULL, '$2y$10$bX7onl2h1emWEOI4wR0mYOqDATiun0/AaALE8E6AKk9EQywk2js/.', 'counsellor', 'active', '2025-09-22 15:57:58'),
 (13, 'std002', 'Andrew', 'andrew@orientacore.ac.ke', NULL, '$2y$10$8m3Zgv4Aj9AnM1V6uGkSQOCgzQ0Cy3sAsDdF8.prRmJuLFohKPXDm', 'student', 'active', '2025-09-22 16:49:40'),
-(14, 'std1234', 'Vera MIchael', 'veramichael@orientacore.ac.ke', NULL, '$2y$10$AHCRYKTz2CaemHQsrMgHO.nPbQiP/xG/XonPeHNPdqXamm9GzuqVm', 'student', 'active', '2025-09-30 15:03:20'),
-(16, 'Con1234', 'counsellor', 'cousellor@gmail.com', NULL, '$2y$10$4jq3UvmjRZq8wKAfO7on8eW6rwSVJUstgVrYJaG655kCY3QKNxDr.', 'counsellor', 'active', '2025-10-03 14:25:56');
+(16, 'Con1234', 'counsellor', 'cousellor@gmail.com', NULL, '$2y$10$4jq3UvmjRZq8wKAfO7on8eW6rwSVJUstgVrYJaG655kCY3QKNxDr.', 'counsellor', 'active', '2025-10-03 14:25:56'),
+(18, 'BIT/2024/43255', 'Noah Chepkonga', 'noahchep1@gmail.com', NULL, '$2y$10$EyefJwceCAc8asAd31CBxuSEGBA58bCQan63lOcEi9zdzNKoNQOTi', 'student', 'active', '2025-11-02 19:31:18'),
+(19, 'BIT/2024/46612', 'VERA MICHAEL', 'veramichael678@gmail.com', NULL, '$2y$10$SiPMN4RhNlrcEvsGCWE3W.qnw/dF0lQWu3wDh9okVHFXSgQSZHt6C', 'student', 'active', '2025-11-03 11:11:57');
 
 --
 -- Indexes for dumped tables
@@ -610,6 +825,26 @@ INSERT INTO `users` (`id`, `reg_no`, `name`, `email`, `profile_pic`, `password_h
 ALTER TABLE `activity_logs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `behavior_questions`
+--
+ALTER TABLE `behavior_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `behavior_responses`
+--
+ALTER TABLE `behavior_responses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `question_id` (`question_id`);
+
+--
+-- Indexes for table `behavior_suggestions`
+--
+ALTER TABLE `behavior_suggestions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `career_assessments`
@@ -719,6 +954,24 @@ ALTER TABLE `activity_logs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `behavior_questions`
+--
+ALTER TABLE `behavior_questions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `behavior_responses`
+--
+ALTER TABLE `behavior_responses`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- AUTO_INCREMENT for table `behavior_suggestions`
+--
+ALTER TABLE `behavior_suggestions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
 -- AUTO_INCREMENT for table `career_assessments`
 --
 ALTER TABLE `career_assessments`
@@ -728,7 +981,7 @@ ALTER TABLE `career_assessments`
 -- AUTO_INCREMENT for table `career_category_scores`
 --
 ALTER TABLE `career_category_scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `career_questions`
@@ -764,7 +1017,7 @@ ALTER TABLE `counselor_reports`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `progress`
@@ -776,13 +1029,13 @@ ALTER TABLE `progress`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `student_career_results`
 --
 ALTER TABLE `student_career_results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `student_performance`
@@ -794,13 +1047,13 @@ ALTER TABLE `student_performance`
 -- AUTO_INCREMENT for table `student_responses`
 --
 ALTER TABLE `student_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=444;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -811,6 +1064,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `activity_logs`
   ADD CONSTRAINT `activity_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `behavior_responses`
+--
+ALTER TABLE `behavior_responses`
+  ADD CONSTRAINT `behavior_responses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `behavior_responses_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `behavior_questions` (`id`);
 
 --
 -- Constraints for table `career_assessments`
